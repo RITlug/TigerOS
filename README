@@ -1,0 +1,26 @@
+The RIT Fedora Remix
+====================
+
+Instructions
+------------
+
+sudo yum -y install spin-kickstarts livecd-tools
+sudo livecd-creator -c fedora-rit-spin.ks
+
+Authors
+-------
+
+Luke Macken <lmacken@redhat.com>
+Eitan Romanoff <ear7631@gmail.com>
+
+Tasks
+-----
+
+https://fedorahosted.org/fossrit/query?milestone=RIT+Spin
+
+Resources
+---------
+
+http://foss.rit.edu
+http://fossrit.fedorahosted.org
+https://fedoraproject.org/wiki/Remix
