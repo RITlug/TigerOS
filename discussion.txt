@@ -49,26 +49,11 @@ What do we want to include for the user for v1.0?
 				* If people want google we can put in the documentation how to switch to google and why we use DuckDuckGo as a default and we can include a link to the wiki in the default homepage
 					* +1
 		* Redshift for the eyes. (On x11)
-	* Jokes
-		* custom recording of the RIT alma mater
-			* sung by orphan children who need a home
-		* a script that renames all created documents by appending tiger to the end of it - lolol
-		* dedicated nuke command for when you mess up and want to start over - RIP
 		* Need to install command auto correct for helping new users ( https://github.com/nvbn/thefuck )
-		* introduce user to password security by auto resetting their password every 24hours. Cannot share password with user as that would violate security
-			* You awful, awful person
-			* Double awful person.
-		* Encourage early childhood sharing by syncing bookmarks between all users
 		* Introduce users to understanding the hardships of those with sight problems by changing the character font after each key pressed (at random)
 		* Dedicated duckduckgo and chill mode
-		* Increase IP security by manually approving each packet.
-			* could possibly outsource to central authority by forwarding packets to the central authoritity and then once approval is granted send them back to be sent formally again
-			* Think (Burp suite)  - https://portswigger.net/burp/
-		* Let users know we care for their health through forced parental settings
-			* install f.lux for improved sleeping - if we're doing f.lux - Fedora uses Redshift GNOME oh
-			* force power off machine after working too long (no warning given as you would ignore your mom telling you to get off xbox anyways)
-			* disable web cam functionality from hackers via electrical short
-			* remind users of their homework obligations through hard shocks to the trackpad
-		* Nickcage plugin installed by default  (cloud to butt optional) <- required
+		* cloud to butt
 			* remote clouds that the user connects to are also turned into butts
+		* https everywhere
+		* ublock origin
 
