@@ -3,9 +3,10 @@
 # Authors:
 #   Luke Macken <lmacken@redhat.com>
 #   Eitan Romanoff <ear7631@gmail.com>
+#   Aidan Kahrs <axk4545@rit.edu>
 #
 # Tasks:
-#   https://fedorahosted.org/fossrit/query?milestone=RIT+Spin
+#
 #
 # Instructions:
 #   sudo yum -y install spin-kickstarts livecd-tools
@@ -16,56 +17,11 @@
 
 %packages
 # Must-have applications
-wget
-libreoffice-writer
-libreoffice-calc
-thunderbird
-pidgin
-ekiga
-emacs
-gimp
-inkscape
-dia
-banshee
-git
-htop
-powertop
-nethack
-screen
-vim-common
-vim-enhanced
-vim
-zsh
-nano
-gpp
-wine
-wireshark
-irssi
-hexchat
-gwibber
-elinks
-transmission
-midori
-evince
-fpaste
+
 
 
 # Legacy cmdline things we don't want
--krb5-auth-dialog
--krb5-workstation
--pam_krb5
--quota
--minicom
--jwhois
--mtr
--pinfo
--rsh
--nfs-utils
--ypbind
--yp-tools
--rpcbind
--acpid
--ntsysv
+
 
 # Drop some system-config things
 -system-config-boot
@@ -83,37 +39,11 @@ fpaste
 cd /usr/share/backgrounds/images
 
 # fetch custom RIT backgrounds
-# note: resolv.conf is not yet set up, so we have to use the hosting ip directly
-su -c "wget --header=\"Host: foss.rit.edu\" http://129.21.49.21/ritfedoraremix/RIT_1280x1024.png"
-su -c "wget --header=\"Host: foss.rit.edu\" http://129.21.49.21/ritfedoraremix/RIT_2048x1536.png"
-su -c "wget --header=\"Host: foss.rit.edu\" http://129.21.49.21/ritfedoraremix/RIT_1920x1200.png"
-su -c "wget --header=\"Host: foss.rit.edu\" http://129.21.49.21/ritfedoraremix/tiger_1280x1024.png"
-su -c "wget --header=\"Host: foss.rit.edu\" http://129.21.49.21/ritfedoraremix/tiger_2048x1536.png"
-su -c "wget --header=\"Host: foss.rit.edu\" http://129.21.49.21/ritfedoraremix/tiger_1920x1200.png"
-su -c "wget --header=\"Host: foss.rit.edu\" http://129.21.49.21/ritfedoraremix/sentinel_1280x800.png"
-su -c "wget --header=\"Host: foss.rit.edu\" http://129.21.49.21/ritfedoraremix/celebration_1280x800.png"
-
-# normalish (1280 x 1024)
-su -c "cp /usr/share/backgrounds/lovelock/default-stripes/normalish/lovelock.png /usr/share/backgrounds/lovelock/default-stripes/normalish/lovelock.png.backup"
-su -c "rm /usr/share/backgrounds/lovelock/default-stripes/normalish/lovelock.png"
-su -c "cp /usr/share/backgrounds/images/tiger_1280x1024.png /usr/share/backgrounds/lovelock/default-stripes/normalish/lovelock.png"
-
-# standard (2048x1536)
-su -c "cp /usr/share/backgrounds/lovelock/default-stripes/standard/lovelock.png /usr/share/backgrounds/lovelock/default-stripes/standard/lovelock.png.backup"
-su -c "rm /usr/share/backgrounds/lovelock/default-stripes/standard/lovelock.png"
-su -c "cp /usr/share/backgrounds/images/tiger_2048x1536.png /usr/share/backgrounds/lovelock/default-stripes/standard/lovelock.png"
-
-# wide (1920x1200)
-su -c "cp /usr/share/backgrounds/lovelock/default-stripes/wide/lovelock.png /usr/share/backgrounds/lovelock/default-stripes/wide/lovelock.png.backup"
-su -c "rm /usr/share/backgrounds/lovelock/default-stripes/wide/lovelock.png"
-su -c "cp /usr/share/backgrounds/images/tiger_1920x1200.png /usr/share/backgrounds/lovelock/default-stripes/wide/lovelock.png"
 
 
 # Fetch rpm fusion scripts, bash_profile
 su -c "mkdir -p /usr/share/autostart"
 
-su -c "wget --header=\"Host: foss.rit.edu\" http://129.21.49.21/ritfedoraremix/enablerpmfusion.txt"
-su -c "wget --header=\"Host: foss.rit.edu\" http://129.21.49.21/ritfedoraremix/FusionEnableLauncher.txt"
 su -c "mv FusionEnableLauncher.txt FusionEnableLauncher.py"
 su -c "mv enablerpmfusion.txt enablerpmfusion.sh"
 su -c "chmod a+rwx FusionEnableLauncher.py"
