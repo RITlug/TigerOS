@@ -10,8 +10,7 @@ sudo livecd-creator -c fedora-rit-spin.ks
 Authors
 -------
 
-Luke Macken <lmacken@redhat.com>
-Eitan Romanoff <ear7631@gmail.com>
+
 Aidan Kahrs <axk4545@rit.edu>
 
 Tasks
