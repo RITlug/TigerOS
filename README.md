@@ -15,7 +15,7 @@ The RIT Fedora Remix
 ### Build the ISO
 From the directory where you cloned this repo run the command below. You may need to preface it with `sudo` if you do not have root privileges.
 ```
-livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project Fedora-soas-Live --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever 25 --title TigerOS-live --macboot
+livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project TigerOS-Live --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever 25 --title TigerOS-live --macboot
 ```
 The resulting iso will be in /var/lmc/
 
