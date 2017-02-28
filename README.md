@@ -22,6 +22,7 @@ The resulting iso will be in /var/lmc/
 ## Authors
 
 * Aidan Kahrs <axk4545@rit.edu>
+* Josh Bicking (Tutorials) <jhb2345@rit.edu>
 
 
 ## Tasks
