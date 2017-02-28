@@ -1,4 +1,4 @@
-The RIT Fedora Remix
+TigerOS
 ====================
 
 
