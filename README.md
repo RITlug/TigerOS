@@ -8,6 +8,7 @@ TigerOS
 ```  
   git clone https://github.com/RITlug/TigerOS.git
 ```
+* Install [Mock](https://github.com/rpm-software-management/mock/wiki) according to your system.
 ### Build the ISO
 From the directory where you cloned this repo run the commands below. You may need to preface it with `sudo` if you do not have root privileges.
 ```
