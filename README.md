@@ -4,20 +4,16 @@ TigerOS
 
 ## Instructions
 ### Setup 
-* Install lorax
-```
-  sudo dnf install lorax
-```
 * Clone this repo
 ```  
   git clone https://github.com/RITlug/TigerOS.git
 ```
 ### Build the ISO
-From the directory where you cloned this repo run the command below. You may need to preface it with `sudo` if you do not have root privileges.
+From the directory where you cloned this repo run the commands below. You may need to preface it with `sudo` if you do not have root privileges.
 ```
-livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project TigerOS-Live --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever 25 --title TigerOS-live --macboot
+chmod +x make-iso.sh
+bash make-iso.sh
 ```
-The resulting iso will be in /var/lmc/
 
 ## Authors
 
