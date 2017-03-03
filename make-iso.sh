@@ -11,11 +11,6 @@ set -eu
 green=`tput setaf 2`
 reset=`tput sgr0`
 
-# check arguments
-if [ $# -ne 3 ]; then
-    echo "Usage: sudo bash build.sh [RELEASE_VER] [BASE_ARCH] [BUILD_VER]"
-    exit 1
-fi
 echo "${green}Welcome to the TigerOS build script${reset}"
 mock -r fedora-25-x86_64 --init
 mock -r fedora-25-x86_64 --copyin tigeros.ks
