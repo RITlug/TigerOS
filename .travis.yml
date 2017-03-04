@@ -1,1 +1,12 @@
-script: ./make-iso.sh
+
+
+{
+  "script": "./make-iso.sh",
+  "sudo": "required"
+  "language": "bash",
+  "group": "stable",
+  "dist": "fedora",
+  "os": "linux"
+}
+
+
