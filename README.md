@@ -1,5 +1,7 @@
 TigerOS
 ====================
+[![Build Status](https://travis-ci.org/RITlug/TigerOS.svg?branch=master)](https://travis-ci.org/RITlug/TigerOS)
+[![Build Status-devel](https://travis-ci.org/RITlug/TigerOS.svg?branch=devel)](https://travis-ci.org/RITlug/TigerOS)
 
 
 ## Instructions
