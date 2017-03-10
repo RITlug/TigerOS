@@ -404,9 +404,11 @@ pidgin
 syslinux
 transmission
 yumex-dnf
+#exclude things (packagekit breaks things, fedora-* packages are replaced by ones we customized.)
 -PackageKit*
 -autofs
 -coolkey
+-fedora-bookmarks
 -fedora-icon-theme
 -fedora-logos
 -fedora-release
@@ -423,7 +425,6 @@ yumex-dnf
 -system-config-network
 -system-config-rootpassword
 -system-config-services
--wget
 -xsane
 -xsane-gimp
 
