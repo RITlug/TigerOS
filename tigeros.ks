@@ -11,6 +11,8 @@ lang en_US.UTF-8
 firewall --enabled --service=mdns
 repo --name="fedora" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
 repo --name="updates" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
+repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch --includepkgs=rpmfusion-free-release
+repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch --includepkgs=rpmfusion-free-release
 # Shutdown after installation
 shutdown
 # Network information
@@ -367,6 +369,8 @@ su -c "chmod a+rwx enablerpmfusion.sh"
 su -c "cp FusionEnableLauncher.py /usr/share/autostart/FusionEnableLauncher.py"
 su -c "cp enablerpmfusion.sh /usr/share/autostart/enablerpmfusion.sh"
 
+# Download and install google chrome
+su -c "dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
 %end
 
 %packages
@@ -392,18 +396,25 @@ f24-backgrounds-extras-gnome
 generic-logos
 generic-release
 generic-release-notes
+gimp
 glibc-all-langpacks
 grub2-efi
 hexchat
+htop
+inkscape
 kernel
 kernel-modules
 kernel-modules-extra
+lynx
 memtest86+
 parole
 pidgin
+playonlinux
+rhythmbox
 syslinux
 transmission
 yumex-dnf
+zsh
 #exclude things (packagekit breaks things, fedora-* packages are replaced by ones we customized.)
 -PackageKit*
 -autofs
