@@ -358,11 +358,9 @@ cd /usr/share/backgrounds/images
 # fetch custom RIT backgrounds
 
 
-# Fetch rpm fusion scripts, bash_profile
+# Fetch rpm fusion scripts
 su -c "mkdir -p /usr/share/autostart"
 
-su -c "mv FusionEnableLauncher.txt FusionEnableLauncher.py"
-su -c "mv enablerpmfusion.txt enablerpmfusion.sh"
 su -c "chmod a+rwx FusionEnableLauncher.py"
 su -c "chmod a+rwx enablerpmfusion.sh"
 
