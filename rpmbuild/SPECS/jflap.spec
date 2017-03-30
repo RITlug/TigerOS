@@ -1,10 +1,11 @@
-Name:           JFLAP
+Name:           jflap
 Version:        7.0
 Release:        1%{?dist}
 Summary:        The JFLAP formal language tool
 License:        JFLAP 7.0 License
 URL:            https://www.jflap.org
 Source0:    %{name}.tar.gz
+Source1:	%{name}.sh
 BuildArch:  noarch
 BuildRequires:  java
 
@@ -12,24 +13,18 @@ BuildRequires:  java
 JFLAP is a package of graphical tools which can be used as an aid in learning the basic concepts of Formal Languages and Automata Theory. 
 
 %prep
-# section for preparation of sources, applying patches
-# or other things which can be done before running the build
-# The macro setup is used to unpack sources
+
 %setup -n %{name} -n %{name}
 
 %build
-# Section for compiling and generally assembling the final pieces.
-# Our Makefile builds the project JAR file
 make
 
 %install
-# Installation into directory prepared by RPM expressed as %{buildroot}
-install -p -m 644 jflap.jar %{buildroot}%{_javadir}/jflap.jar
+%{__mkdir_p} %{buildroot}%{_javadir}
+install -p -m 755 JFLAP_With_Source.jar %{buildroot}%{_javadir}/jflap.jar
+%{__mkdir_p} %{buildroot}%{_bindir}
+install -p -m 755 %{SOURCE1} %{buildroot}%{_bindir}/jflap 
 
-# We use macro %jpackage_script to generate wrapper script for our JAR
-# Will be explained in later sections
-%jpackage_script jflap "" "" %{name} jflap true
-# List of files that this package installs on the system
 %files
 %{_javadir}/jflap.jar
 %{_bindir}/jflap
