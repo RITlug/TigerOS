@@ -1,16 +1,14 @@
-Name:           logisim
-Version:        2.7.1
+Name:           jflap
+Version:        7.0
 Release:        1%{?dist}
-Summary:        The J:FLAP formal language tool
-License:        JFLAP 7.0 License
-URL:            https://www.jflap.org
+Summary:        A graphical tool for designing and simulating logic circuits
+License:        GPLv2
+URL:            http://www.cburch.com/logisim/index.html
 Source0:    %{name}.tar.gz
-Source1:	%{name}.sh
 BuildArch:  noarch
 BuildRequires:  java
 
 %description
-JFLAP is a package of graphical tools which can be used as an aid in learning the basic concepts of Formal Languages and Automata Theory. 
 
 %prep
 
@@ -21,12 +19,18 @@ make
 
 %install
 %{__mkdir_p} %{buildroot}%{_javadir}
-install -p -m 755 JFLAP_With_Source.jar %{buildroot}%{_javadir}/jflap.jar
+install -p -m 755 JFLAP_With_Source.jar %{buildroot}%{_javadir}/logisim.jar
 %{__mkdir_p} %{buildroot}%{_bindir}
-install -p -m 755 %{SOURCE1} %{buildroot}%{_bindir}/jflap 
+install -p -m 755 %{_sourcedir}/jflap.sh %{buildroot}%{_bindir}/jflap 
+%{__mkdir_p} %{buildroot}%{_datadir}/icons
+install -p -m 644 %{_sourcedir}/logisim.jpg %{buildroot}%{_datadir}/icons/logisim.jpg 
+%{__mkdir_p} %{buildroot}%{_datadir}/applications
+install -p -m 644 %{_sourcedir}/logisim.desktop %{buildroot}%{_datadir}/applications/logisim.desktop
 
 %files
-%{_javadir}/jflap.jar
-%{_bindir}/jflap
+%{_javadir}/logisim.jar
+%{_bindir}/logisim
+%{_datadir}/applications/logisim.desktop
+%{_datadir}/icons/logisim.jpg
 
 %changelog
