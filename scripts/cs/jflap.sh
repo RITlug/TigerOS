@@ -4,9 +4,10 @@
 
 DEPS=java-1.8.0-openjdk
 PROG=JFLAP
+DIR=/usr/share/java/JFLAP
 FILE=JFLAP.jar
 FILE_URL=http://www.jflap.org/jflaptmp/may15-2011/withoutSource/JFLAP.jar
-PROG_NAME=jflap
+LINK=/usr/local/bin/jflap
 ICON_URL=http://jflap.org/jflapLogo2.jpg
 
 
@@ -25,24 +26,24 @@ dnf install $DEPS -y
 
 # Make the dirs
 
-mkdir -p /usr/local/$PROG
+mkdir -p $DIR
 
 
 # Get the files
 
-curl -o /usr/local/$PROG/$FILE $FILE_URL
+curl -o $DIR/$FILE $FILE_URL
 
 
 # Make a link
 
-cat > /usr/local/bin/$PROG_NAME <<EOF
+cat > $LINK <<EOF
 #!/bin/sh
 cd \$HOME
-java -jar /usr/local/$PROG/$FILE
+java -jar $DIR/$FILE
 EOF
 
-chmod +x /usr/local/bin/$PROG_NAME
-chmod +x /usr/local/$PROG/$FILE
+chmod +x $LINK
+chmod +x $DIR/$FILE
 
 
 # Make a desktop file
@@ -66,7 +67,7 @@ Comment=Experiment with formal languages topics
 Path=
 
 # The executable of the application, possibly with arguments.
-Exec=/usr/local/bin/jflap
+Exec=$LINK
 
 # The name of the icon that will be used to display this entry
 Icon=/usr/local/share/icons/$PROG.jpg
