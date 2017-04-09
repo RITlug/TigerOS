@@ -407,7 +407,7 @@ lynx
 memtest86+
 parole
 pidgin
-playonlinux
+#playonlinux
 rhythmbox
 syslinux
 transmission
@@ -420,7 +420,7 @@ zsh
 -fedora-bookmarks
 -fedora-icon-theme
 -fedora-logos
--fedora-release
+#-fedora-release
 -fedora-release-notes
 -hplip
 -isdn4k-utils
