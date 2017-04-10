@@ -1,6 +1,8 @@
 TigerOS
 ====================
 
+[![Build Status](http://tigeros.ritlug.com:8080/job/TigerOS/badge/icon)](http://tigeros.ritlug.com:8080/job/TigerOS/)
+
 ## Instructions
 ### Setup 
 * Clone this repo
