@@ -31,7 +31,7 @@ do
             ;;
         "IT/WMC")
             echo -e "Welcome to the TigerOS IT/WMC package installer script. 
-            This script will install mysql, mongodb, subversion, filezilla and nodejs on you machine."
+            This script will install mysql, mongodb, subversion, filezilla, nodejs and jGRASP on you machine."
             while true; do
             read -p "Do you wish to continue? [y/n] " yn
             case $yn in
@@ -47,6 +47,7 @@ do
             sudo semanage port -a -t mongod_port_t -p tcp 27017
             #sudo dnf install httpd
             sudo dnf install subversion filezilla nodejs php
+			#call jGRASP script here
             echo "Install finished"
             exit
             ;;
@@ -75,8 +76,8 @@ do
             [Nn]* ) exit;;
             esac
             done
-            sudo dnf install wireshark python python3 
-            #call jGrasp installer script here
+            sudo dnf install eclipse-jdt ruby sqlite 
+            #call Spin and Alloy install scripts here
             echo "Install finished"
             exit
             ;;
