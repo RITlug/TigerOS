@@ -358,7 +358,7 @@ EOF
 cd /usr/share/backgrounds/images
 
 # fetch custom RIT backgrounds
-FIXME
+#FIXME
 
 # Fetch rpm fusion scripts
 mkdir -p $INSTALL_ROOT/usr/share/autostart
