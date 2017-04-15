@@ -242,8 +242,8 @@ fi
 if [ -n "\$xdriver" ]; then
    cat > /etc/X11/xorg.conf.d/00-xdriver.conf <<FOE
 Section "Device"
-	Identifier	"Videocard0"
-	Driver	"\$xdriver"
+  Identifier  "Videocard0"
+  Driver  "\$xdriver"
 EndSection
 FOE
 fi
@@ -359,16 +359,20 @@ cd /usr/share/backgrounds/images
 
 
 # Fetch rpm fusion scripts
-su -c "mkdir -p /usr/share/autostart"
+mkdir -p /usr/share/autostart
 
-su -c "chmod a+rwx FusionEnableLauncher.py"
-su -c "chmod a+rwx enablerpmfusion.sh"
+cp -R scripts/ /home/liveuser/
+chown -R liveuser:liveuser /home/liveuser
+restorecon -R /home/liveuser
 
-su -c "cp FusionEnableLauncher.py /usr/share/autostart/FusionEnableLauncher.py"
-su -c "cp enablerpmfusion.sh /usr/share/autostart/enablerpmfusion.sh"
+cp /home/liveuser/enablerpmfusion.sh /usr/share/autostart/enablerpmfusion.sh
+cp /home/liveuser/FusionEnableLauncher.py /usr/share/autostart/FusionEnableLauncher.py
+cp /home/liveuser/postinstall /usr/share/autostart/postinstall
+
+chmod a+rwx enablerpmfusion.sh
 
 # Download and install google chrome
-su -c "dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
+dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 %end
 
 %packages
