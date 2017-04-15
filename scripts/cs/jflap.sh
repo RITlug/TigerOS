@@ -4,7 +4,7 @@
 # author: Josh Bicking <jhb2345@rit.edu>
 
 DEPS=java-1.8.0-openjdk
-PROG=Alloy
+PROG=JFLAP
 FILE=/usr/share/java/JFLAP.jar
 FILE_URL=http://www.jflap.org/jflaptmp/may15-2011/withoutSource/JFLAP.jar
 LINK=/usr/local/bin/jflap
