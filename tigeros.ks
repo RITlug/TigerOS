@@ -361,7 +361,7 @@ cd /usr/share/backgrounds/images
 # Fetch rpm fusion scripts
 mkdir -p /usr/share/autostart
 
-cp -R scripts/ /home/liveuser/
+cp -R /scripts/ /home/liveuser/
 chown -R liveuser:liveuser /home/liveuser
 restorecon -R /home/liveuser
 
