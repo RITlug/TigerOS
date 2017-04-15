@@ -369,7 +369,7 @@ ln -s $INSTALL_ROOT/home/liveuser/enablerpmfusion.sh $INSTALL_ROOT/usr/share/aut
 ln -s $INSTALL_ROOT/usr/local/tigeros/FusionEnableLauncher.py $INSTALL_ROOT/usr/share/autostart/FusionEnableLauncher.py
 ln -s $INSTALL_ROOT/usr/local/tigeros/postinstall $INSTALL_ROOT/usr/share/autostart/postinstall
 
-chmod -R a+rwx $INSTALL_ROOT/usr/local/tigeros/
+chmod -R 755 $INSTALL_ROOT/usr/local/tigeros/
 
 # Download and install google chrome
 dnf --installroot=$INSTALL_ROOT install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
