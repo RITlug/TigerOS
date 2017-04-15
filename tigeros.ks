@@ -363,7 +363,7 @@ cd /usr/share/backgrounds/images
 # Fetch rpm fusion scripts
 mkdir -p $INSTALL_ROOT/usr/share/autostart
 mkdir -p $INSTALLROOT/usr/local/tigeros
-cp -R /scripts/ $INSTALL_ROOT/usr/local/tigeros/
+cp -r /scripts/ $INSTALL_ROOT/usr/local/tigeros/
 
 ln -s $INSTALL_ROOT/home/liveuser/enablerpmfusion.sh $INSTALL_ROOT/usr/share/autostart/enablerpmfusion.sh
 ln -s $INSTALL_ROOT/usr/local/tigeros/FusionEnableLauncher.py $INSTALL_ROOT/usr/share/autostart/FusionEnableLauncher.py
