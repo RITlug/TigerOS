@@ -356,23 +356,22 @@ EOF
 cd /usr/share/backgrounds/images
 
 # fetch custom RIT backgrounds
-
+FIXME
 
 # Fetch rpm fusion scripts
 mkdir -p /usr/share/autostart
-
-cp -R /scripts/ /home/liveuser/
-chown -R liveuser:liveuser /home/liveuser
-restorecon -R /home/liveuser
+mkdir -p /usr/local/tigeros
+cp -R /scripts/ /mnt/sysimage/usr/local/tigeros/
 
 cp /home/liveuser/enablerpmfusion.sh /usr/share/autostart/enablerpmfusion.sh
-cp /home/liveuser/FusionEnableLauncher.py /usr/share/autostart/FusionEnableLauncher.py
-cp /home/liveuser/postinstall /usr/share/autostart/postinstall
+ln -s /mnt/sysimage/usr/local/tigeros/FusionEnableLauncher.py /mnt/sysimage/usr/share/autostart/FusionEnableLauncher.py
+ln -s /mnt/sysimage/usr/local/tigeros/postinstall /mnt/sysimage/usr/share/autostart/postinstall
 
-chmod a+rwx enablerpmfusion.sh
+chmod -R a+rwx /mnt/sysimage/usr/local/tigeros/
 
 # Download and install google chrome
 dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+restorecon -R /home/liveuser
 %end
 
 %packages
@@ -411,7 +410,6 @@ lynx
 memtest86+
 parole
 pidgin
-#playonlinux
 rhythmbox
 syslinux
 transmission
@@ -424,7 +422,7 @@ zsh
 -fedora-bookmarks
 -fedora-icon-theme
 -fedora-logos
-#-fedora-release
+-fedora-release
 -fedora-release-notes
 -hplip
 -isdn4k-utils
