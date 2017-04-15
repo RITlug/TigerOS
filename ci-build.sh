@@ -8,7 +8,7 @@ set -eu
 # Usage: sudo bash build.sh					    #
 #                                                                   #
 #####################################################################
-wget https://raw.githubusercontent.com/RITlug/TigerOS/master/tigeros.ks
+wget -O tigeros.ks https://raw.githubusercontent.com/RITlug/TigerOS/master/tigeros.ks
 mock -r fedora-25-x86_64 --init
 mock -r fedora-25-x86_64 --copyin tigeros.ks ./tigeros.ks
 mock -r fedora-25-x86_64 --install lorax-lmc-novirt git vim-minimal pykickstart svn
