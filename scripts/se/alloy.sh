@@ -5,10 +5,9 @@
 
 DEPS=java-1.8.0-openjdk
 PROG=Alloy
-FILE=/usr/share/java/JFLAP.jar
-FILE_URL=http://www.jflap.org/jflaptmp/may15-2011/withoutSource/JFLAP.jar
-LINK=/usr/local/bin/jflap
-ICON_URL=http://jflap.org/jflapLogo2.jpg
+FILE=/usr/share/java/alloy.jar
+FILE_URL=http://alloy.mit.edu/alloy/downloads/alloy4.2.jar
+LINK=/usr/local/bin/alloy
 
 
 # Check that the current user is root
@@ -51,4 +50,4 @@ EOF
 
 # Get the icons
 mkdir -p /usr/local/share/icons
-curl -o /usr/local/share/icons/$PROG.jpg $ICON_URL
+unzip -j "$FILE" "images/logo.gif" -d "alloy.gif"
