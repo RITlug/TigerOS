@@ -42,14 +42,15 @@ do
             esac
             done
             wget https://dev.mysql.com/get/mysql57-community-release-fc25-9.noarch.rpm -O mysql-repo.rpm
-             dnf install -y mysql-repo.rpm
-             dnf install -y mysql-community-server
-            echo "mysql installed see https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/ step 4 for further instructions"
-             dnf install -y mongodb
-             semanage port -a -t mongod_port_t -p tcp 27017
+            dnf install -y mysql-repo.rpm
+            dnf install -y mysql-community-server
+            echo "mysql installed see "https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/" step 4 for further instructions"
+            dnf install -y mongodb
+            semanage port -a -t mongod_port_t -p tcp 27017
             # dnf install -y httpd
-             dnf install -y subversion filezilla nodejs php
-                  #call jGRASP script here
+            dnf install -y subversion filezilla nodejs php
+            #call jGRASP script here
+            mysql_secure_installation
             echo "Install finished"
             exit
             ;;
@@ -63,7 +64,7 @@ do
             [Nn]* ) exit;;
             esac
             done
-             dnf install -y wireshark python python3 
+            dnf install -y wireshark-gtk python python3 
             #call jGrasp installer script here
             echo "Install finished"
             exit
@@ -78,8 +79,8 @@ do
             [Nn]* ) exit;;
             esac
             done
-             dnf install -y eclipse-jdt ruby sqlite 
-           ./se/spin.sh && ./se/alloy.sh 
+            dnf install -y eclipse-jdt ruby sqlite 
+            ./se/spin.sh && ./se/alloy.sh 
             echo "Install finished"
             exit
             ;;

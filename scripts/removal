@@ -43,7 +43,8 @@ do
                 esac
             done
             sudo dnf remove mongodb subversion filezilla nodejs php mysql-repo.rpm mysql-community-server
-            # port 27017 is still open. Need to figure out how to revert that
+			semanage port -d -t mongod_port_t -p tcp 27017
+			firewall-cmd --del-port=22017/tcp --permanent && firewall-cmd --reload
             # jGrasp installer script must be implemented before it can be removed.
             ;;
         "NSSA/CIT")
