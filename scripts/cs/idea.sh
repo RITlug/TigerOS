@@ -8,11 +8,11 @@ PROG="IntelliJ IDEA Community Edition"
 PROG_SHORT=idea-ce
 VERSION=idea-IC-171.4073.35
 TEMP_FILE=/tmp/ideaIC-2017.1.1.tar.gz
-FILE=/usr/local/$VERSION/bin/idea.sh
-FILE_DIR=/usr/local/bin/$VERSION/
+FILE_DIR=/usr/local
+FILE=$FILE_DIR/$VERSION/bin/idea.sh
 FILE_URL=https://download.jetbrains.com/idea/ideaIC-2017.1.1.tar.gz
-LINK=/usr/local/bin/idea-ce
-ICON=/usr/local/$VERSION/bin/idea.png
+LINK=$FILE_DIR/bin/$PROG_SHORT
+ICON=$FILE_DIR/$VERSION/bin/idea.png
 
 
 # Check that the current user is root
@@ -29,7 +29,7 @@ if [ ! -z "$1" ] && [ "$1" = "--remove" ]
 
     rm $LINK
     rm /usr/local/share/applications/jetbrains-idea-ce.desktop
-    rm -rf $FILE_DIR
+    rm -rf $FILE_DIR/$VERSION
 
     # Remove local links if they were created
     for i in `ls /home/`
@@ -46,13 +46,13 @@ else
     # Get the files
     wget -O $TEMP_FILE $FILE_URL 
     # Extract the files
-    tar -xf $TEMP_FILE -C /usr/share/java/
+    tar -xf $TEMP_FILE -C $FILE_DIR
 
     # Make a link
     ln -s $FILE $LINK
 
     chmod +x $LINK
-    chmod -R 755 $FILE_DIR
+    chmod -R 755 $FILE_DIR/$VERSION
 
     # Make a desktop file
     # IDEA's first time setup allows the user to make this file. Naming it as such means the user won't get a duplicate entry.

@@ -18,25 +18,38 @@ then
     exit
 fi
 
-# Install dependencies
-dnf install $DEPS -y
+## Removal
+# Check if remove flag was passed
+if [ ! -z "$1" ] && [ "$1" = "--remove" ]
+  then
 
-# Get the files
-curl -o $FILE $FILE_URL
+    rm $LINK
+    rm /usr/local/share/applications/$PROG.desktop
+    rm $FILE
+    rm /usr/local/share/icons/$PROG.jpg
 
-# Make a link
-cat > $LINK <<EOF
+else 
+
+    ## Installation
+    # Install dependencies
+    dnf install $DEPS -y
+
+    # Get the files
+    curl -o $FILE $FILE_URL
+
+    # Make a link
+    cat > $LINK <<EOF
 #!/bin/sh
 cd \$HOME
 java -jar $FILE
 EOF
 
-chmod +x $LINK
-chmod +x $FILE
+    chmod +x $LINK
+    chmod +x $FILE
 
 
-# Make a desktop file
-cat > /usr/local/share/applications/$PROG.desktop <<EOF
+    # Make a desktop file
+    cat > /usr/local/share/applications/$PROG.desktop <<EOF
 [Desktop Entry]
 Type=Application
 Version=7.0
@@ -48,7 +61,8 @@ Icon=/usr/local/share/icons/$PROG.jpg
 Terminal=false
 Categories=Education;Languages;Java;
 EOF
-
-# Get the icons
-mkdir -p /usr/local/share/icons
-curl -o /usr/local/share/icons/$PROG.jpg $ICON_URL
+    
+    # Get the icons
+    mkdir -p /usr/local/share/icons
+    curl -o /usr/local/share/icons/$PROG.jpg $ICON_URL
+fi
