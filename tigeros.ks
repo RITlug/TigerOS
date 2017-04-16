@@ -353,7 +353,7 @@ restorecon -R /home/liveuser
 
 EOF
 %end
-%post
+%post --nochroot
 # go to the backgrounds folder for custom images
 cd /usr/share/backgrounds/images
 
