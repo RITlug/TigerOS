@@ -21,7 +21,7 @@ do
     case $opt in
         "CS")
             echo -e "Welcome to the TigerOS CS package installer script.\n 
-                  This script will install Intellij, PyCharm, prolog, racket and JFLAP on your machine."
+                  This script will install Intellij IDEA, PyCharm, PROLOG, Racket and JFLAP on your machine."
             while true; do
             read -p "Do you wish to continue? [y/n] " yn
             case $yn in
@@ -29,7 +29,11 @@ do
             [Nn]* ) exit;;
             esac
             done
-            #call/execute installer scripts here.
+            ./cs/idea.sh
+            # TODO Pycharm
+            # TODO PROLOG
+            # TODO Racket
+            ./cs/jflap.sh
             ;;
         "IT/WMC")
             echo -e "Welcome to the TigerOS IT/WMC package installer script. 
