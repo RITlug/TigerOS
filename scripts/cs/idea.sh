@@ -8,11 +8,11 @@ PROG="IntelliJ IDEA Community Edition"
 PROG_SHORT=idea-ce
 VERSION=idea-IC-171.4073.35
 TEMP_FILE=/tmp/ideaIC-2017.1.1.tar.gz
-FILE=/usr/share/java/$VERSION/bin/idea.sh
-FILE_DIR=/usr/share/java/$VERSION/
+FILE=/usr/local/$VERSION/bin/idea.sh
+FILE_DIR=/usr/local/bin/$VERSION/
 FILE_URL=https://download.jetbrains.com/idea/ideaIC-2017.1.1.tar.gz
 LINK=/usr/local/bin/idea-ce
-ICON=/usr/share/java/$VERSION/bin/idea.png
+ICON=/usr/local/$VERSION/bin/idea.png
 
 
 # Check that the current user is root
@@ -24,7 +24,7 @@ fi
 
 ## Removal
 # Check if remove flag was passed
-if [ ! -z "$1" ] && [ "$1" = "-remove" ]
+if [ ! -z "$1" ] && [ "$1" = "--remove" ]
   then
 
     rm $LINK
