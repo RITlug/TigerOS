@@ -75,7 +75,7 @@ do
             ;;
         "SE")
             echo -e "Welcome to the TigerOS SE package installer script.\n
-            This script will install ruby, eclipse, Spin, sqlite3 and MIT Alloy on you machine."
+            This script will install ruby, eclipse, Spin, sqlite3, plantUML, gitk and MIT Alloy on you machine."
             while true; do
             read -p "Do you wish to continue? [y/n] " yn
             case $yn in
@@ -83,7 +83,7 @@ do
             [Nn]* ) exit;;
             esac
             done
-            dnf install -y eclipse-jdt ruby sqlite 
+            dnf install -y eclipse-jdt ruby sqlite plantuml gitk geany
             ./se/spin.sh && ./se/alloy.sh 
             echo "Install finished"
             exit

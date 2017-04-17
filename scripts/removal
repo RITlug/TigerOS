@@ -73,7 +73,7 @@ do
                     [Nn]* ) exit;;
                 esac
             done
-            sudo dnf -y remove eclipse-jdt ruby sqlite
+            sudo dnf -y remove eclipse-jdt ruby sqlite gitk plantuml
             # Spin and Alloy need to be implemented in installer script before removal.
             echo "All files have been removed."
             exit
