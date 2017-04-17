@@ -42,9 +42,9 @@ do
                     [Nn]* ) exit;;
                 esac
             done
-            sudo dnf remove mongodb subversion filezilla nodejs php mysql-repo.rpm mysql-community-server
-            # port 27017 is still open. Need to figure out how to revert that
-            # jGrasp installer script must be implemented before it can be removed.
+            sudo dnf -y remove mongodb subversion filezilla nodejs php mysql-repo.rpm mysql-community-server
+            sudo semanage port -d -t mongod_port_t -p tcp 27017
+            # WARNING --> port 27017 must be tested to make sure the above line of code closes it 
             ;;
         "NSSA/CIT")
             echo -e "Welcome to the TigerOS NSSA/CIT package removal script.\n
@@ -56,7 +56,7 @@ do
                     [Nn]* ) exit;;
                 esac
             done
-            sudo dnf remove wireshark python python3
+            sudo dnf -y remove wireshark python python3
             # WARNING --> jGrasp has not been implemented in the installer script yet. Cannot remove
             echo "Install finished."
             exit
@@ -71,7 +71,7 @@ do
                     [Nn]* ) exit;;
                 esac
             done
-            sudo dnf remove eclipse-jdt ruby sqlite
+            sudo dnf -y remove eclipse-jdt ruby sqlite
             # Spin and Alloy need to be implemented in installer script before removal.
             echo "All files have been removed."
             exit
