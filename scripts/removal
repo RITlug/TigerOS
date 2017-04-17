@@ -42,9 +42,16 @@ do
                     [Nn]* ) exit;;
                 esac
             done
+<<<<<<< HEAD
             sudo dnf -y remove mongodb subversion filezilla nodejs php mysql-repo.rpm mysql-community-server
             sudo semanage port -d -t mongod_port_t -p tcp 27017
             # WARNING --> port 27017 must be tested to make sure the above line of code closes it 
+=======
+            sudo dnf remove mongodb subversion filezilla nodejs php mysql-repo.rpm mysql-community-server
+			semanage port -d -t mongod_port_t -p tcp 27017
+			firewall-cmd --del-port=22017/tcp --permanent && firewall-cmd --reload
+            # jGrasp installer script must be implemented before it can be removed.
+>>>>>>> 0af9527f0b706733ffa103ccb634d93f08c506f5
             ;;
         "NSSA/CIT")
             echo -e "Welcome to the TigerOS NSSA/CIT package removal script.\n

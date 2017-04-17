@@ -242,8 +242,8 @@ fi
 if [ -n "\$xdriver" ]; then
    cat > /etc/X11/xorg.conf.d/00-xdriver.conf <<FOE
 Section "Device"
-	Identifier	"Videocard0"
-	Driver	"\$xdriver"
+  Identifier  "Videocard0"
+  Driver  "\$xdriver"
 EndSection
 FOE
 fi
@@ -295,7 +295,7 @@ echo 'File created by kickstart. See systemd-update-done.service(8).' \
 
 # Drop the rescue kernel and initramfs, we don't need them on the live media itself.
 # See bug 1317709
-rm -f /boot/*-rescue*
+rm -f /boot/\*-rescue*
 
 # Disable network service here, as doing it in the services line
 # fails due to RHBZ #1369794
@@ -308,7 +308,7 @@ touch /etc/machine-id
 %end
 
 %post --nochroot
-cp $INSTALL_ROOT/usr/share/licenses/*-release/* $LIVE_ROOT/
+cp $INSTALL_ROOT/usr/share/licenses/\*-release/\* $LIVE_ROOT/
 
 # only works on x86, x86_64
 if [ "$(uname -i)" = "i386" -o "$(uname -i)" = "x86_64" ]; then
@@ -319,6 +319,7 @@ fi
 %end
 
 %post
+# THIS IS ALL RUN IN THE LIVE ROOT
 # cinnamon configuration
 
 # create /etc/sysconfig/desktop (needed for installation)
@@ -351,24 +352,28 @@ chown -R liveuser:liveuser /home/liveuser
 restorecon -R /home/liveuser
 
 EOF
-
+%end
+%post --nochroot
 # go to the backgrounds folder for custom images
 cd /usr/share/backgrounds/images
 
 # fetch custom RIT backgrounds
-
+#FIXME
 
 # Fetch rpm fusion scripts
-su -c "mkdir -p /usr/share/autostart"
+mkdir -p $INSTALL_ROOT/usr/share/autostart
+mkdir -p $INSTALLROOT/usr/local/tigeros
+cp -r /scripts/ $INSTALL_ROOT/usr/local/tigeros/
 
-su -c "chmod a+rwx FusionEnableLauncher.py"
-su -c "chmod a+rwx enablerpmfusion.sh"
+ln -s $INSTALL_ROOT/home/liveuser/enablerpmfusion.sh $INSTALL_ROOT/usr/share/autostart/enablerpmfusion.sh
+ln -s $INSTALL_ROOT/usr/local/tigeros/FusionEnableLauncher.py $INSTALL_ROOT/usr/share/autostart/FusionEnableLauncher.py
+ln -s $INSTALL_ROOT/usr/local/tigeros/postinstall $INSTALL_ROOT/usr/share/autostart/postinstall
 
-su -c "cp FusionEnableLauncher.py /usr/share/autostart/FusionEnableLauncher.py"
-su -c "cp enablerpmfusion.sh /usr/share/autostart/enablerpmfusion.sh"
+chmod -R 755 $INSTALL_ROOT/usr/local/tigeros/
 
 # Download and install google chrome
-su -c "dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
+dnf --installroot=$INSTALL_ROOT install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+restorecon -R $INSTALL_ROOT/home/liveuser
 %end
 
 %packages
@@ -407,7 +412,6 @@ lynx
 memtest86+
 parole
 pidgin
-#playonlinux
 rhythmbox
 syslinux
 transmission
@@ -420,7 +424,7 @@ zsh
 -fedora-bookmarks
 -fedora-icon-theme
 -fedora-logos
-#-fedora-release
+-fedora-release
 -fedora-release-notes
 -hplip
 -isdn4k-utils
