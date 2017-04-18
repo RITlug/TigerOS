@@ -31,7 +31,9 @@ do
                     [Nn]* ) exit;;
                 esac
             done
-            # removal script cannot be done without the installer script implementing this section.
+            ./cs/idea.sh --remove       # removes Intellij IDEA
+            ./cs/logisim.sh --remove    # removes jFLAP
+            ./cs/jflap.sh --remove      # additional jFLAP removal
             ;;
         "IT/WMC")
             echo -e "Welcome to the TigerOS IT/WMC package removal script.\n
