@@ -21,7 +21,7 @@ do
     case $opt in
         "CS")
             echo -e "Welcome to the TigerOS CS package installer script.\n 
-                  This script will install Intellij IDEA, PyCharm, PROLOG, Racket and JFLAP on your machine."
+                  This script will install Intellij IDEA, PyCharm, PROLOG, Racket, Logisim and JFLAP on your machine."
             while true; do
             read -p "Do you wish to continue? [y/n] " yn
             case $yn in
@@ -33,6 +33,7 @@ do
             # TODO Pycharm
             # TODO PROLOG
             # TODO Racket
+			./cs/logisim.sh
             ./cs/jflap.sh
             ;;
         "IT/WMC")
@@ -51,8 +52,7 @@ do
             echo "mysql installed see "https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/" step 4 for further instructions"
             dnf install -y mongodb
             semanage port -a -t mongod_port_t -p tcp 27017
-            # dnf install -y httpd
-            dnf install -y subversion filezilla nodejs php
+            dnf install -y subversion filezilla nodejs
             #call jGRASP script here
             mysql_secure_installation
             echo "Install finished"
@@ -69,13 +69,15 @@ do
             esac
             done
             dnf install -y wireshark-gtk python python3 
+			groupadd wireshark
+			usermod -aG wireshark $USER
             #call jGrasp installer script here
             echo "Install finished"
             exit
             ;;
         "SE")
             echo -e "Welcome to the TigerOS SE package installer script.\n
-            This script will install ruby, eclipse, Spin, sqlite3 and MIT Alloy on you machine."
+            This script will install ruby, eclipse, Spin, sqlite3, plantUML, gitk and MIT Alloy on you machine."
             while true; do
             read -p "Do you wish to continue? [y/n] " yn
             case $yn in
@@ -83,7 +85,7 @@ do
             [Nn]* ) exit;;
             esac
             done
-            dnf install -y eclipse-jdt ruby sqlite 
+            dnf install -y eclipse-jdt ruby sqlite plantuml gitk geany
             ./se/spin.sh && ./se/alloy.sh 
             echo "Install finished"
             exit
