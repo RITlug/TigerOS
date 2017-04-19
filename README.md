@@ -27,7 +27,7 @@ With a 3.40GHz dual core i3 CPU with hyperthreading enabled and 16GB of RAM, the
 ## Tasks
 
 ## Contributing
-Please fork this repository and submit pull requests against the devel branch. Pull requests will be reviewed as time permits.
+Please see [CONTRIBUTING.md](CONTRIBUTING.md)
 ## Resources
 
 * [RITlug website](http://ritlug.com)
