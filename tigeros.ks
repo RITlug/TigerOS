@@ -416,6 +416,7 @@ pidgin
 rhythmbox
 syslinux
 transmission
+wget
 yumex-dnf
 zsh
 #exclude things (packagekit breaks things, fedora-* packages are replaced by ones we customized.)
