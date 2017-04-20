@@ -362,9 +362,8 @@ cd /usr/share/backgrounds/images
 mkdir -p /usr/share/autostart
 mkdir -p /usr/local/tigeros/
 cd /usr/local/tigeros/
-#wget people.rit.edu/axk4545/scripts.tar.gz
-wget --no-check-certificate http://129.21.1.44/axk4545/scripts.tar.gz
-tar -xvf /usr/local/tigeros/scripts.tar.gz -C /usr/local/tigeros/
+svn export https://github.com/RITlug/TigerOS/trunk/scripts/ /usr/local/tigeros/
+mv "scripts/*" /usr/local/tigeros/
 ln -s /usr/local/enablerpmfusion.sh /usr/share/autostart/enablerpmfusion.sh
 ln -s /usr/local/tigeros/FusionEnableLauncher.py /usr/share/autostart/FusionEnableLauncher.py
 ln -s /usr/local/tigeros/postinstall /usr/share/autostart/postinstall
