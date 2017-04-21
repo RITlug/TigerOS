@@ -30,15 +30,17 @@ do
                 esac
             done
             ./cs/idea.sh
-            # TODO Pycharm
+			dnf copr enable phracek/PyCharm; dnf install pycharm-community; 
             # TODO PROLOG
-            # TODO Racket
+            wget https://mirror.racket-lang.org/installers/6.8/racket-6.8-x86_64-linux.sh
+			chmod +x racket-6.8-x86_64-linux.sh
+			./racket-6.8-x86_64-linux.sh
 			./cs/logisim.sh
             ./cs/jflap.sh
             ;;
         "IT/WMC")
             echo -e "Welcome to the TigerOS IT/WMC package installer script. 
-            This script will install mysql, mongodb, subversion, filezilla, nodejs and jGRASP on you machine."
+            This script will install mysql, mongodb, subversion, filezilla, nodejs and jGRASP on your machine."
             while true; do
                 read -p "Do you wish to continue? [y/n] " yn
                 case $yn in
@@ -49,18 +51,20 @@ do
             wget https://dev.mysql.com/get/mysql57-community-release-fc25-9.noarch.rpm -O mysql-repo.rpm
             dnf install -y mysql-repo.rpm
             dnf install -y mysql-community-server
-            echo "mysql installed see "https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/" step 4 for further instructions"
+            echo "mysql installed see "https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/" for further instructions. Start at step 4."
             dnf install -y mongodb
             semanage port -a -t mongod_port_t -p tcp 27017
-            dnf install -y subversion filezilla nodejs
-            #call jGRASP script here
+            dnf install -y subversion filezilla nodejs java-1.8.0-openjdk
+	        echo "Due to licensing constraints we cannot distribute jGrasp at this time.\n
+			Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
+			Please note that the JDK is already installed and accesibble on your system."
             mysql_secure_installation
             echo "Install finished"
             exit
             ;;
         "NSSA/CIT")
             echo -e "Welcome to the TigerOS NSSA/CIT package installer script.\n 
-            This script will install wireshark, python 2.7, python 3 and jGrasp on you machine."
+            This script will install wireshark, python 2.7, python 3 and jGrasp on your machine."
             while true; do
                 read -p "Do you wish to continue? [y/n] " yn
                 case $yn in
@@ -68,16 +72,19 @@ do
                     [Nn]* ) exit;;
                 esac
             done
-            dnf install -y wireshark-gtk python python3 
+            dnf install -y wireshark-gtk python python3 java-1.8.0-openjdk
 			groupadd wireshark
 			usermod -aG wireshark $USER
             #call jGrasp installer script here
+			echo "Due to licensing constraints we cannot distribute jGrasp at this time.\n
+			Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
+			Please note that the JDK is already installed and accesibble on your system."
             echo "Install finished"
             exit
             ;;
         "SE")
             echo -e "Welcome to the TigerOS SE package installer script.\n
-            This script will install ruby, eclipse, Spin, sqlite3, plantUML, gitk and MIT Alloy on you machine."
+            This script will install ruby, eclipse, Spin, sqlite3, plantUML, gitk and MIT Alloy on your machine."
             while true; do
                 read -p "Do you wish to continue? [y/n] " yn
                 case $yn in

@@ -8,6 +8,13 @@ then
     echo "Please run this script as root (sudo $@$0)."
     exit
 fi
+# Check if remove flag was passed
+if [ ! -z "$1" ] && [ "$1" = "--remove" ]
+  then
+    rm /usr/local/bin/spin
+    rm /usr/local/bin/ispin
+else
+
 wget http://spinroot.com/spin/Src/spin646.tar.gz -O /tmp/spin.tar.gz
 tar -xvf /tmp/spin.tar.gz
 cd /tmp/Spin/Src*
