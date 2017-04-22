@@ -13,6 +13,8 @@ repo --name="fedora" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo
 repo --name="updates" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
 repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch --includepkgs=rpmfusion-free-release
 repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch --includepkgs=rpmfusion-free-release
+#TODO add tigeros repo
+#repo --name="tigeros-packages"
 # Shutdown after installation
 shutdown
 # Network information
