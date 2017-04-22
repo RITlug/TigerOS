@@ -24,5 +24,5 @@ mock -r fedora-25-x86_64 --copyout /var/lmc/TigerOS.iso /srv/isos/TigerOS.iso
 rm -rf /var/lmc/
 cd /srv/isos/
 sha512sum *.iso >CHECKSUM512
-
+chown -R apache:apache /srv
 
