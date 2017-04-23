@@ -11,9 +11,10 @@ lang en_US.UTF-8
 firewall --enabled --service=mdns
 repo --name="fedora" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
 repo --name="updates" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
-repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch --includepkgs=rpmfusion-free-release
-repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch --includepkgs=rpmfusion-free-release
-repo --name="tigeros" --mirrorlist=https://tigeros.ritlug.com/mirrors --includepkgs=tigeros-repos 
+repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch
+repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
+repo --name="google-chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
+repo --name="tigeros" --mirrorlist=https://tigeros.ritlug.com/mirrors 
 # Shutdown after installation
 shutdown
 # Network information
@@ -371,9 +372,6 @@ ln -s /usr/local/tigeros/postinstall /usr/share/autostart/postinstall
 
 chmod -R 755 /usr/local/tigeros/
 
-# Download and install google chrome
-dnf  install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-
 restorecon -R /usr/local/tigeros
 %end
 
@@ -401,6 +399,7 @@ generic-release
 generic-release-notes
 gimp
 glibc-all-langpacks
+google-chrome
 grub2-efi
 hexchat
 htop
