@@ -14,7 +14,7 @@ repo --name="updates" --mirrorlist=http://mirrors.fedoraproject.org/metalink?rep
 repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch
 repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
 repo --name="google-chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
-repo --name="tigeros" --mirrorlist=https://tigeros.ritlug.com/mirrors 
+repo --name="tigeros" --baseurl=http://tigeros.ritlug.com/packages/$basearch/
 # Shutdown after installation
 shutdown
 # Network information
@@ -353,12 +353,6 @@ chown -R liveuser:liveuser /home/liveuser
 restorecon -R /home/liveuser
 
 EOF
-
-# go to the backgrounds folder for custom images
-cd /usr/share/backgrounds/images
-
-# fetch custom RIT backgrounds
-#FIXME
 
 # Fetch scripts
 mkdir -p /usr/share/autostart
