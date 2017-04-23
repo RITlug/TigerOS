@@ -22,7 +22,7 @@ cp -f /var/lmc/TigerOS.iso /srv/isos/
 rm -rf /var/lmc/
 cd /srv/isos
 sha512sum *.iso > CHECKSUM512
-chown -R apache:apache /srv
+chown -R nginx:nginx /srv
 cd /home/build
 rm -rf anaconda/ *.log
 setenforce 1
