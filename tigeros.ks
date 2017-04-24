@@ -389,7 +389,6 @@ anaconda
 desktop-backgrounds-basic
 dracut-live
 f24-backgrounds-extras-gnome
-TigerOS-release
 generic-release-notes
 gimp
 glibc-all-langpacks
@@ -410,6 +409,7 @@ rpmfusion-free-release
 syslinux
 TigerOS-bookmarks
 TigerOS-logos
+TigerOS-release
 tigeros-repos
 transmission
 wget
