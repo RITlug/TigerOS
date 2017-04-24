@@ -18,7 +18,7 @@ setenforce 0
 rm -rf tigeros.ks
 wget -O tigeros.ks https://raw.githubusercontent.com/RITlug/TigerOS/master/tigeros.ks
 livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project TigerOS-Live --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever 25 --title TigerOS-live --macboot
-cp -f /var/lmc/TigerOS.iso /srv/isos/TigerOS-$(date +%Y%d%m) 
+cp -f /var/lmc/TigerOS.iso /srv/isos/TigerOS-$(date +%Y%d%m).iso 
 rm -rf /var/lmc/
 cd /srv/isos
 sha512sum TigerOS-$(date +%Y%d%m).iso > CHECKSUM512-$(date +%Y%d%m) 
