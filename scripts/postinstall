@@ -40,7 +40,7 @@ do
             ;;
         "IT/WMC")
             echo -e "Welcome to the TigerOS IT/WMC package installer script. 
-            This script will install mysql, mongodb, subversion, filezilla, nodejs and jGRASP on your machine."
+            This script will install mysql, mongodb, subversion, filezilla, and nodejs on your machine."
             while true; do
                 read -p "Do you wish to continue? [y/n] " yn
                 case $yn in
@@ -64,7 +64,7 @@ do
             ;;
         "NSSA/CIT")
             echo -e "Welcome to the TigerOS NSSA/CIT package installer script.\n 
-            This script will install wireshark, python 2.7, python 3 and jGrasp on your machine."
+            This script will install wireshark, python 2.7, and python 3 on your machine."
             while true; do
                 read -p "Do you wish to continue? [y/n] " yn
                 case $yn in
@@ -75,10 +75,9 @@ do
             dnf install -y wireshark-gtk python python3 java-1.8.0-openjdk
 			groupadd wireshark
 			usermod -aG wireshark $USER
-            #call jGrasp installer script here
 			echo "Due to licensing constraints we cannot distribute jGrasp at this time.\n
 			Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
-			Please note that the JDK is already installed and accesibble on your system."
+			Please note that the JDK is already installed and accessible on your system."
             echo "Install finished"
             exit
             ;;

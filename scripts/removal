@@ -48,11 +48,10 @@ do
             sudo dnf -y remove mongodb subversion filezilla nodejs php mysql-repo.rpm mysql-community-server
 			semanage port -d -t mongod_port_t -p tcp 27017
 			firewall-cmd --del-port=22017/tcp --permanent && firewall-cmd --reload
-            # jGrasp installer script must be implemented before it can be removed.
             ;;
         "NSSA/CIT")
             echo -e "Welcome to the TigerOS NSSA/CIT package removal script.\n
-                  This script will remove wireshark, python 2.7, python 3, and jGrasp from your machine."
+                  This script will remove wireshark, python 2.7, and python 3 from your machine."
             while true; do
                 read -p "Do you wish to continue [y/n] " yn
                 case $yn in
@@ -61,7 +60,6 @@ do
                 esac
             done
             sudo dnf -y remove wireshark
-            # WARNING --> jGrasp has not been implemented in the installer script yet. Cannot remove
             echo "Install finished."
             exit
             ;;
