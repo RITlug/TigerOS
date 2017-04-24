@@ -18,11 +18,12 @@ setenforce 0
 rm -rf tigeros.ks
 wget -O tigeros.ks https://raw.githubusercontent.com/RITlug/TigerOS/master/tigeros.ks
 livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project TigerOS-Live --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever 25 --title TigerOS-live --macboot
-cp -f /var/lmc/TigerOS.iso /srv/isos/
+cp -f /var/lmc/TigerOS.iso /srv/isos/TigerOS-$(date +%Y%d%m) 
 rm -rf /var/lmc/
 cd /srv/isos
-sha512sum *.iso > CHECKSUM512
+sha512sum *.iso > CHECKSUM512-$(date +%Y%d%m) 
 chown -R nginx:nginx /srv
+chmod 755 /srv/isos/*.iso
 cd /home/build
-rm -rf anaconda/ *.log
+rm -rf anaconda/ *.log livemedia.log program.log
 setenforce 1

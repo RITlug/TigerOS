@@ -389,7 +389,7 @@ anaconda
 desktop-backgrounds-basic
 dracut-live
 f24-backgrounds-extras-gnome
-generic-release
+TigerOS-release
 generic-release-notes
 gimp
 glibc-all-langpacks
