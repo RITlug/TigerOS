@@ -21,6 +21,7 @@ livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project Tiger
 cp -f /var/lmc/TigerOS.iso /srv/isos/TigerOS-$(date +%Y%m%d).iso 
 rm -rf /var/lmc/
 cd /srv/isos
+rm -rf CHECKSUM512-$(date +%Y%m%d)
 sha512sum TigerOS-$(date +%Y%m%d).iso > CHECKSUM512-$(date +%Y%m%d) 
 chown -R nginx:nginx /srv
 chmod 755 /srv/isos/*.iso
