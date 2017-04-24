@@ -46,8 +46,8 @@ do
                 esac
             done
             sudo dnf -y remove mongodb subversion filezilla nodejs php mysql-repo.rpm mysql-community-server
-			semanage port -d -t mongod_port_t -p tcp 27017
-			firewall-cmd --del-port=22017/tcp --permanent && firewall-cmd --reload
+            semanage port -d -t mongod_port_t -p tcp 27017
+            firewall-cmd --del-port=22017/tcp --permanent && firewall-cmd --reload
             ;;
         "NSSA/CIT")
             echo -e "Welcome to the TigerOS NSSA/CIT package removal script.\n
@@ -75,7 +75,7 @@ do
             done
             sudo dnf -y remove eclipse-jdt ruby sqlite gitk plantuml
             ./se/spin.sh --remove       
-			./se/alloy.sh --remove    
+            ./se/alloy.sh --remove
             echo "All files have been removed."
             exit
             ;;

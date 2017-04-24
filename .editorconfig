@@ -1,0 +1,16 @@
+# EditorConfig file: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix line endings
+[*]
+end_of_line = lf
+
+# 4 space indentation for every file
+indent_style = space
+indent_size = 4
+
+# Except for in Makefiles
+[Makefile]
+indent_style = tab
