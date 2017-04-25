@@ -390,7 +390,7 @@ gimp
 glibc-all-langpacks
 google-chrome
 grub2-efi
-gscreenshot
+#gscreenshot
 hexchat
 htop
 inkscape
