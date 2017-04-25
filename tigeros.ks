@@ -365,8 +365,8 @@ Version=1.0
 Type=Application
 Name=TigerOS postinstall script
 Comment=
-Exec=sudo /usr/share/tigeros/postinstall
-Terminal=true
+Exec=gnome-terminal -e "sudo /usr/share/tigeros/postinstall"
+Terminal=false
 EOF
 
 restorecon -R /usr/local/tigeros
