@@ -358,9 +358,16 @@ EOF
 mkdir -p /usr/share/autostart
 mkdir -p /usr/local/tigeros/
 cd /usr/local/tigeros/
-ln -s /usr/local/enablerpmfusion.sh /usr/share/autostart/enablerpmfusion.sh
-ln -s /usr/local/tigeros/postinstall /usr/share/autostart/postinstall
 chmod -R 755 /usr/local/tigeros/
+cat > /etc/xdg/autostart/postinstall.desktop <<EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=TigerOS postinstall script
+Comment=
+Exec=sudo /usr/share/tigeros/postinstall
+Terminal=true
+EOF
 
 restorecon -R /usr/local/tigeros
 %end
