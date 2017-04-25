@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/bin/bash
+
 # Enable RPMFusion nonfree repos
 # author: Aidan Kahrs <axk4545@rit.edu>
+
 if [ $EUID != 0 ]
 then
     echo "Please run this script as root ( $@$0)."

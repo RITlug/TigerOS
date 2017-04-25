@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash
 
 # MIT Alloy installer script for TigerOS
 # author: Aidan Kahrs <axk4545@rit.edu>

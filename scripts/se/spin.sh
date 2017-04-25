@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Spin install script for TigerOS
 # author: Aidan Kahrs <axk4545@rit.edu>
 
