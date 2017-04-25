@@ -28,3 +28,4 @@ chmod 755 /srv/isos/*.iso
 cd /home/build
 rm -rf anaconda/ *.log livemedia.log program.log
 setenforce 1
+echo "Build finished"
