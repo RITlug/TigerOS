@@ -390,6 +390,7 @@ gimp
 glibc-all-langpacks
 google-chrome
 grub2-efi
+gscreenshot
 hexchat
 htop
 inkscape
@@ -402,6 +403,7 @@ parole
 pidgin
 rhythmbox
 rpmfusion-free-release
+scrot
 syslinux
 tigeros-bookmarks
 tigeros-logos
