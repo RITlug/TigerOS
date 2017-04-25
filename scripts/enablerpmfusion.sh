@@ -8,7 +8,7 @@ then
     echo "Please run this script as root ( $@$0)."
     exit
 fi
-echo "This script will enable the RPMFusion repositories for nonfree or patent encumbered software. Due to the legal implications of shipping non-free or patent encumbered technology, we cannot enable these packages by default. Long story short, if you want to do things like like listen to mp3, or watch youtube videos in your browser, you will probably need to enable these options. You may enable these options at any time by running the enablerpmfusion.sh script located on your desktop."
+echo "This script will enable the RPMFusion repositories for nonfree or patent encumbered software. Due to the legal implications of shipping non-free or patent encumbered technology, we cannot enable these packages by default. Long story short, if you want to do things like like listen to mp3, or watch youtube videos in your browser, you will probably need to enable these options. You may enable these options at any time by running the sudo enablerpmfusion in a terminal."
 while true; do
     read -p "Do you wish to continue? [y/n] " yn
     case $yn in
