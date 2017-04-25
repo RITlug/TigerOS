@@ -358,12 +358,8 @@ EOF
 mkdir -p /usr/share/autostart
 mkdir -p /usr/local/tigeros/
 cd /usr/local/tigeros/
-dnf install subversion
-svn export https://github.com/RITlug/TigerOS/trunk/scripts/ /usr/local/tigeros/
-mv "scripts/*" /usr/local/tigeros/
 ln -s /usr/local/enablerpmfusion.sh /usr/share/autostart/enablerpmfusion.sh
 ln -s /usr/local/tigeros/postinstall /usr/share/autostart/postinstall
-dnf remove subversion
 chmod -R 755 /usr/local/tigeros/
 
 restorecon -R /usr/local/tigeros
@@ -407,10 +403,11 @@ pidgin
 rhythmbox
 rpmfusion-free-release
 syslinux
-TigerOS-bookmarks
-TigerOS-logos
-TigerOS-release
+tigeros-bookmarks
+tigeros-logos
+tigeros-release
 tigeros-repos
+tigeros-scripts
 transmission
 wget
 yumex-dnf
