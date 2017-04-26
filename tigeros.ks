@@ -356,12 +356,6 @@ EOF
 
 # Fetch scripts
 mkdir -p /usr/share/autostart
-mkdir -p /usr/local/tigeros/
-cd /usr/local/tigeros/
-chmod -R 755 /usr/local/tigeros/
-ln -s /usr/local/tigeros/enablerpmfusion.sh /usr/local/bin/enablerpmfusion
-ln -s /usr/local/tigeros/postinstall /usr/local/bin/postinstall
-ln -s /usr/local/tigeros/removal /usr/local/bin/removal
 chmod +x /usr/local/bin/*
 cat > /etc/xdg/autostart/postinstall.desktop <<EOF
 [Desktop Entry]
@@ -373,7 +367,7 @@ Exec=gnome-terminal -e "sudo /usr/share/tigeros/postinstall"
 Terminal=false
 EOF
 
-restorecon -R /usr/local/tigeros
+restorecon -R /usr/local/bin
 %end
 
 %packages
@@ -416,6 +410,7 @@ rhythmbox
 rpmfusion-free-release
 scrot
 syslinux
+tigeros-backgrounds
 tigeros-bookmarks
 tigeros-logos
 tigeros-release
