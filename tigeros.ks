@@ -362,6 +362,7 @@ chmod -R 755 /usr/local/tigeros/
 ln -s /usr/local/tigeros/enablerpmfusion.sh /usr/local/bin/enablerpmfusion
 ln -s /usr/local/tigeros/postinstall /usr/local/bin/postinstall
 ln -s /usr/local/tigeros/removal /usr/local/bin/removal
+chmod +x /usr/local/bin/*
 cat > /etc/xdg/autostart/postinstall.desktop <<EOF
 [Desktop Entry]
 Version=1.0
