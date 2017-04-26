@@ -1,7 +1,7 @@
-#!/bin/sh -e
+#!/usr/bin/bash
 
-# JFLAP installer script for TigerOS
-# author: Josh Bicking <jhb2345@rit.edu>
+# MIT Alloy installer script for TigerOS
+# author: Aidan Kahrs <axk4545@rit.edu>
 
 DEPS=java-1.8.0-openjdk
 PROG=Alloy
@@ -16,6 +16,16 @@ then
     echo "Please run this script as root (sudo $@$0)."
     exit
 fi
+# Check if remove flag was passed
+if [ ! -z "$1" ] && [ "$1" = "--remove" ]
+  then
+
+    rm $LINK
+    rm /usr/local/share/applications/$PROG.desktop
+    rm $FILE
+    rm /usr/local/share/icons/$PROG.jpg
+
+else 
 
 # Install dependencies
 dnf install $DEPS -y

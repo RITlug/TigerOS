@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/usr/bin/bash
 
 # IntelliJ installer script for TigerOS
 # author: Josh Bicking <jhb2345@rit.edu>

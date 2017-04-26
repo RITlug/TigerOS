@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # TigerOS script for the removal of unwanted major-specific packages
 # Author: Tim Zabel <tjz8659@rit.edu>
@@ -19,7 +19,7 @@ PS3='Please enter the major for the courses you wish to remove: '
 options=("CS" "IT/WMC" "NSSA/CIT" "SE" "Quit")
 select opt in "${options[@]}"
 do
-    # all commands here are done with the -y flag. Individual removals do not ask the user for permission beforehand
+    # all dnf commands here are done with the -y flag. Individual removals do not ask the user for permission beforehand
     case $opt in
         "CS")
             echo -e "Welcome to the TigerOS CS package removal script.\n
@@ -31,9 +31,11 @@ do
                     [Nn]* ) exit;;
                 esac
             done
-            ./cs/idea.sh --remove       # removes Intellij IDEA
-            ./cs/logisim.sh --remove    # removes jFLAP
-            ./cs/jflap.sh --remove      # additional jFLAP removal
+            ./usr/local/bin/cs/idea.sh --remove       # removes Intellij IDEA
+            ./usr/local/bin/cs/logisim.sh --remove    # removes logisim
+            ./usr/local/bin/cs/jflap.sh --remove      # removes JFLAP
+            echo "Removal finished."
+            exit
             ;;
         "IT/WMC")
             echo -e "Welcome to the TigerOS IT/WMC package removal script.\n
@@ -46,13 +48,14 @@ do
                 esac
             done
             sudo dnf -y remove mongodb subversion filezilla nodejs php mysql-repo.rpm mysql-community-server
-			semanage port -d -t mongod_port_t -p tcp 27017
-			firewall-cmd --del-port=22017/tcp --permanent && firewall-cmd --reload
-            # jGrasp installer script must be implemented before it can be removed.
+            semanage port -d -t mongod_port_t -p tcp 27017
+            firewall-cmd --del-port=22017/tcp --permanent && firewall-cmd --reload
+            echo "Removal finished."
+            exit
             ;;
         "NSSA/CIT")
             echo -e "Welcome to the TigerOS NSSA/CIT package removal script.\n
-                  This script will remove wireshark, python 2.7, python 3, and jGrasp from your machine."
+                  This script will remove wireshark, python 2.7, and python 3 from your machine."
             while true; do
                 read -p "Do you wish to continue [y/n] " yn
                 case $yn in
@@ -60,9 +63,8 @@ do
                     [Nn]* ) exit;;
                 esac
             done
-            sudo dnf -y remove wireshark python python3
-            # WARNING --> jGrasp has not been implemented in the installer script yet. Cannot remove
-            echo "Install finished."
+            sudo dnf -y remove wireshark
+            echo "Removal finished."
             exit
             ;;
         "SE" )
@@ -76,8 +78,9 @@ do
                 esac
             done
             sudo dnf -y remove eclipse-jdt ruby sqlite gitk plantuml
-            # Spin and Alloy need to be implemented in installer script before removal.
-            echo "All files have been removed."
+            ./usr/local/bin/se/spin.sh --remove       
+            ./usr/local/bin/se/alloy.sh --remove
+            echo "Removal finished."
             exit
             ;;
         "Quit")

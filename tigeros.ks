@@ -11,8 +11,10 @@ lang en_US.UTF-8
 firewall --enabled --service=mdns
 repo --name="fedora" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
 repo --name="updates" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
-repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch --includepkgs=rpmfusion-free-release
-repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch --includepkgs=rpmfusion-free-release
+repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch
+repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
+repo --name="google-chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
+repo --name="tigeros" --baseurl=http://tigeros.ritlug.com/packages/$basearch/
 # Shutdown after installation
 shutdown
 # Network information
@@ -352,26 +354,24 @@ restorecon -R /home/liveuser
 
 EOF
 
-# go to the backgrounds folder for custom images
-cd /usr/share/backgrounds/images
-
-# fetch custom RIT backgrounds
-#FIXME
-
 # Fetch scripts
 mkdir -p /usr/share/autostart
 mkdir -p /usr/local/tigeros/
 cd /usr/local/tigeros/
-svn export https://github.com/RITlug/TigerOS/trunk/scripts/ /usr/local/tigeros/
-mv "scripts/*" /usr/local/tigeros/
-ln -s /usr/local/enablerpmfusion.sh /usr/share/autostart/enablerpmfusion.sh
-ln -s /usr/local/tigeros/FusionEnableLauncher.py /usr/share/autostart/FusionEnableLauncher.py
-ln -s /usr/local/tigeros/postinstall /usr/share/autostart/postinstall
-
 chmod -R 755 /usr/local/tigeros/
-
-# Download and install google chrome
-dnf  install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+ln -s /usr/local/tigeros/enablerpmfusion.sh /usr/local/bin/enablerpmfusion
+ln -s /usr/local/tigeros/postinstall /usr/local/bin/postinstall
+ln -s /usr/local/tigeros/removal /usr/local/bin/removal
+chmod +x /usr/local/bin/*
+cat > /etc/xdg/autostart/postinstall.desktop <<EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=TigerOS postinstall script
+Comment=
+Exec=gnome-terminal -e "sudo /usr/share/tigeros/postinstall"
+Terminal=false
+EOF
 
 restorecon -R /usr/local/tigeros
 %end
@@ -396,12 +396,12 @@ anaconda
 desktop-backgrounds-basic
 dracut-live
 f24-backgrounds-extras-gnome
-generic-logos
-generic-release
 generic-release-notes
 gimp
 glibc-all-langpacks
+google-chrome
 grub2-efi
+#gscreenshot
 hexchat
 htop
 inkscape
@@ -413,7 +413,14 @@ memtest86+
 parole
 pidgin
 rhythmbox
+rpmfusion-free-release
+scrot
 syslinux
+tigeros-bookmarks
+tigeros-logos
+tigeros-release
+tigeros-repos
+tigeros-scripts
 transmission
 wget
 yumex-dnf
