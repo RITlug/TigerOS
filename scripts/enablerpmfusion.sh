@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Enable RPMFusion nonfree repos
 # author: Aidan Kahrs <axk4545@rit.edu>

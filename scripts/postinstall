@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+﻿#!/usr/bin/bash
 
 # TigerOS postinstall package setup script
 # author: Aidan Kahrs <axk4545@rit.edu>
