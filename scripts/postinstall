@@ -29,14 +29,14 @@ do
                     [Nn]* ) exit;;
                 esac
             done
-            ./usr/local/tigeros/cs/idea.sh
+            ./usr/local/bin/cs/idea.sh
             dnf copr enable phracek/PyCharm; dnf install pycharm-community;
             # TODO PROLOG
             wget https://mirror.racket-lang.org/installers/6.8/racket-6.8-x86_64-linux.sh
             chmod +x racket-6.8-x86_64-linux.sh
             ./racket-6.8-x86_64-linux.sh
-            ./usr/local/tigeros/cs/logisim.sh
-            ./usr/local/tigeros/cs/jflap.sh
+            ./usr/local/bin/cs/logisim.sh
+            ./usr/local/bin/cs/jflap.sh
             ;;
         "IT/WMC")
             echo -e "Welcome to the TigerOS IT/WMC package installer script. 
@@ -92,7 +92,7 @@ do
                 esac
             done
             dnf install -y eclipse-jdt ruby sqlite plantuml gitk geany
-            ./usr/local/tigeros/se/spin.sh && ./usr/local/tigeros/se/alloy.sh 
+            ./usr/local/bin/se/spin.sh && ./usr/bin/tigeros/se/alloy.sh 
             echo "Install finished"
             exit
             ;;
