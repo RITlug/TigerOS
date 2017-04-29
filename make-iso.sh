@@ -2,10 +2,10 @@
 set -eu
 
 ####################################################################
-# TigerOS Build Script    		                                   #
+# TigerOS Build Script 	                                           #
 # @author: Aidan Kahrs	                                           #
 #                                                                  #
-# Usage: sudo bash make-iso.sh									   #
+# Usage: sudo bash make-iso.sh                                     #
 #                                                                  #
 ####################################################################
 green=`tput setaf 2`
