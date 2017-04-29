@@ -7,14 +7,14 @@ TigerOS
 ```  
   git clone https://github.com/RITlug/TigerOS.git
 ```
-Install lorax-lmc-novirt
+Install [mock](https://github.com/rpm-software-management/mock/wiki)
 
 ### Build the ISO
 Requires current version of Fedora.x86\_64 to build.
 From the directory where you cloned this repo run the commands below. You may need to preface it with `sudo` if you do not have root privileges.
 ```
 chmod +x make-iso.sh
-bash make-iso.sh
+./make-iso.sh
 ```
 With a 3.40GHz dual core i3 CPU with hyperthreading enabled and 16GB of RAM, the build process after the initial build should take approximately 40 minutes to complete. The initial build time will vary based on specs. 
 
