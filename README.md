@@ -10,6 +10,7 @@ TigerOS
 Install lorax-lmc-novirt
 
 ### Build the ISO
+Requires current version of Fedora.x86\_64 to build.
 From the directory where you cloned this repo run the commands below. You may need to preface it with `sudo` if you do not have root privileges.
 ```
 chmod +x make-iso.sh
