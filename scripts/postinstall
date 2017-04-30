@@ -14,7 +14,7 @@ echo -e "Welcome to the TigerOS post install script.\n
 This script will walk you through initial configuration if TigerOS including installing a set of packages used for classes in your major."
 echo -e "\n"
 sleep 5;
-./usr/local/bin/enablerpmfusion
+bash /usr/local/bin/enablerpmfusion
 PS3='Please enter your major: '
 options=("CS" "IT/WMC" "NSSA/CIT" "SE" "Quit")
 select opt in "${options[@]}"
