@@ -31,9 +31,9 @@ do
                     [Nn]* ) exit;;
                 esac
             done
-            ./usr/local/bin/cs/idea.sh --remove       # removes Intellij IDEA
-            ./usr/local/bin/cs/logisim.sh --remove    # removes logisim
-            ./usr/local/bin/cs/jflap.sh --remove      # removes JFLAP
+            bash /usr/local/bin/cs/idea.sh --remove       # removes Intellij IDEA
+            bash /usr/local/bin/cs/logisim.sh --remove    # removes logisim
+            bash /usr/local/bin/cs/jflap.sh --remove      # removes JFLAP
             echo "Removal finished."
             exit
             ;;
@@ -78,8 +78,8 @@ do
                 esac
             done
             sudo dnf -y remove eclipse-jdt ruby sqlite gitk plantuml
-            ./usr/local/bin/se/spin.sh --remove       
-            ./usr/local/bin/se/alloy.sh --remove
+            bash /usr/local/bin/se/spin.sh --remove       
+            bash /usr/local/bin/se/alloy.sh --remove
             echo "Removal finished."
             exit
             ;;
