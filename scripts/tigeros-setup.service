@@ -1,0 +1,9 @@
+[Desktop Entry]
+Description=installs major-specific programs
+
+[Service]
+ExecStart=gnome-terminal -e "/usr/share/tigeros/postinstall"
+
+[Install]
+WantedBy=multi-user.target
+

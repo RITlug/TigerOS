@@ -355,17 +355,7 @@ restorecon -R /home/liveuser
 EOF
 
 # Fetch scripts
-mkdir -p /usr/share/autostart
-chmod +x /usr/local/bin/*
-cat > /etc/xdg/autostart/postinstall.desktop <<EOF
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=TigerOS postinstall script
-Comment=
-Exec=gnome-terminal -e "sudo /usr/share/tigeros/postinstall"
-Terminal=false
-EOF
+chmod +x /usr/local/bin/\*
 
 restorecon -R /usr/local/bin
 %end
