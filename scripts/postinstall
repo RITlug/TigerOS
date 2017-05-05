@@ -13,9 +13,10 @@ fi
 echo -e "Welcome to the TigerOS post install script.\n
 This script will walk you through initial configuration of TigerOS including installing a set of packages used for classes in your major."
 echo -e "\n"
-sleep 5;
-systemctl mask tigeros-setup.service
+sleep 3;
+find / -name "tigeros-postinstall.desktop" |xargs rm > /dev/null
 bash /usr/local/bin/enablerpmfusion
+echo -e "\n\n"
 PS3='Please enter your major: '
 options=("CS" "IT/WMC" "NSSA/CIT" "SE" "Quit")
 select opt in "${options[@]}"
@@ -32,7 +33,7 @@ do
                 esac
             done
             bash /usr/local/bin/cs/idea.sh
-            dnf copr enable phracek/PyCharm; dnf install pycharm-community;
+            dnf copr enable -y phracek/PyCharm; dnf install pycharm-community;
             # TODO PROLOG
             wget https://mirror.racket-lang.org/installers/6.8/racket-6.8-x86_64-linux.sh
             chmod +x racket-6.8-x86_64-linux.sh
