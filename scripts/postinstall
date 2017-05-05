@@ -37,9 +37,10 @@ This script will install Intellij IDEA, PyCharm, PROLOG, Racket, Logisim and JFL
             # TODO PROLOG
             wget https://mirror.racket-lang.org/installers/6.8/racket-6.8-x86_64-linux.sh
             chmod +x racket-6.8-x86_64-linux.sh
-            bash /racket-6.8-x86_64-linux.sh
+            bash racket-6.8-x86_64-linux.sh
             bash /usr/local/bin/cs/logisim.sh
             bash /usr/local/bin/cs/jflap.sh
+            exit
             ;;
         "IT/WMC")
             echo -e "Welcome to the TigerOS IT/WMC package installer script.\n
