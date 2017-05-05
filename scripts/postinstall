@@ -1,4 +1,4 @@
-﻿#!/usr/bin/bash
+#!/bin/bash
 
 # TigerOS postinstall package setup script
 # author: Aidan Kahrs <axk4545@rit.edu>
@@ -10,21 +10,21 @@ then
     echo "Please run this script as root ( $@$0)."
     exit
 fi
+echo
 echo -e "Welcome to the TigerOS post install script.\n
 This script will walk you through initial configuration of TigerOS including installing a set of packages used for classes in your major."
-echo -e "\n"
-sleep 3;
-find / -name "tigeros-postinstall.desktop" |xargs rm > /dev/null
-bash /usr/local/bin/enablerpmfusion
-echo -e "\n\n"
-PS3='Please enter your major: '
+echo
+find /home -name "tigeros-postinstall.desktop" -exec rm {} + 2>/dev/null
+#bash /usr/local/bin/enablerpmfusion
+PS3='Please enter a number: '
 options=("CS" "IT/WMC" "NSSA/CIT" "SE" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
         "CS")
             echo -e "Welcome to the TigerOS CS package installer script.\n 
-                  This script will install Intellij IDEA, PyCharm, PROLOG, Racket, Logisim and JFLAP on your machine."
+This script will install Intellij IDEA, PyCharm, PROLOG, Racket, Logisim and JFLAP on your machine."
+            echo
             while true; do
                 read -p "Do you wish to continue? [y/n] " yn
                 case $yn in
@@ -42,8 +42,9 @@ do
             bash /usr/local/bin/cs/jflap.sh
             ;;
         "IT/WMC")
-            echo -e "Welcome to the TigerOS IT/WMC package installer script. 
-            This script will install mysql, mongodb, subversion, filezilla, and nodejs on your machine."
+            echo -e "Welcome to the TigerOS IT/WMC package installer script.\n
+This script will install mysql, mongodb, subversion, filezilla, and nodejs on your machine."
+            echo
             while true; do
                 read -p "Do you wish to continue? [y/n] " yn
                 case $yn in
@@ -58,16 +59,17 @@ do
             dnf install -y mongodb
             semanage port -a -t mongod_port_t -p tcp 27017
             dnf install -y subversion filezilla nodejs java-1.8.0-openjdk
-            echo "Due to licensing constraints we cannot distribute jGrasp at this time.\n
-            Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
-            Please note that the JDK is already installed and accesibble on your system."
+            echo -e "Due to licensing constraints we cannot distribute jGrasp at this time. \n
+Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
+Please note that the JDK is already installed and accesibble on your system."
             mysql_secure_installation
             echo "Install finished"
             exit
             ;;
         "NSSA/CIT")
             echo -e "Welcome to the TigerOS NSSA/CIT package installer script.\n 
-            This script will install wireshark, python 2.7, and python 3 on your machine."
+This script will install wireshark, python 2.7, and python 3 on your machine."
+            echo
             while true; do
                 read -p "Do you wish to continue? [y/n] " yn
                 case $yn in
@@ -79,14 +81,15 @@ do
             groupadd wireshark
             usermod -aG wireshark $USER
             echo "Due to licensing constraints we cannot distribute jGrasp at this time.\n
-            Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
-            Please note that the JDK is already installed and accessible on your system."
+Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
+Please note that the JDK is already installed and accessible on your system."
             echo "Install finished"
             exit
             ;;
         "SE")
             echo -e "Welcome to the TigerOS SE package installer script.\n
-            This script will install ruby, eclipse, Spin, sqlite3, plantUML, gitk and MIT Alloy on your machine."
+This script will install ruby, eclipse, Spin, sqlite3, plantUML, gitk and MIT Alloy on your machine."
+            echo
             while true; do
                 read -p "Do you wish to continue? [y/n] " yn
                 case $yn in
