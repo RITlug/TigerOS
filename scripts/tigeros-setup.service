@@ -1,9 +1,0 @@
-[Desktop Entry]
-Description=installs major-specific programs
-
-[Service]
-ExecStart=gnome-terminal -e "/usr/local/bin/postinstall"
-
-[Install]
-WantedBy=multi-user.target
-
