@@ -7,7 +7,7 @@
 # Check that the current user is root
 if [ $EUID != 0 ]
 then
-    echo "Please run this script as root ( $@$0)."
+    echo "Please run this script as root (sudo $@$0)."
     exit
 fi
 echo
