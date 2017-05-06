@@ -3,6 +3,6 @@ Version=1.0
 Type=Application
 Name=TigerOS postinstall script
 Comment=
-Exec=gnome-terminal -e "sudo /usr/share/tigeros/postinstall"
+Exec=gnome-terminal -e "sudo /usr/share/tigeros/postinstall" --window-with-profile=Unnamed
 Terminal=false
 
