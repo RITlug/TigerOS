@@ -81,7 +81,7 @@ This script will install wireshark, python 2.7, and python 3 on your machine."
             dnf install -y wireshark-gtk python python3 java-1.8.0-openjdk
             groupadd wireshark
             usermod -aG wireshark $USER
-            echo "Due to licensing constraints we cannot distribute jGrasp at this time.\n
+            echo -e "Due to licensing constraints we cannot distribute jGrasp at this time.\n
 Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
 Please note that the JDK is already installed and accessible on your system."
             echo "Install finished"
