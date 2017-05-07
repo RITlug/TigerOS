@@ -354,9 +354,9 @@ restorecon -R /home/liveuser
 
 EOF
 
-# Fetch scripts
+# TigerOS specific setup
 chmod +x /usr/local/bin/\*
-
+gsettings set org.cinnamon.desktop.background /usr/share/backgrounds/tigeros/wallpaper2-1920x1080.jpg 
 restorecon -R /usr/local/bin
 %end
 
