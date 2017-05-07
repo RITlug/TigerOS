@@ -60,7 +60,7 @@ This script will install mysql, mongodb, subversion, filezilla, and nodejs on yo
             dnf install -y mongodb
             semanage port -a -t mongod_port_t -p tcp 27017
             dnf install -y subversion filezilla nodejs java-1.8.0-openjdk
-            echo -e "Due to licensing constraints we cannot distribute jGrasp at this time. \n
+            echo -e "Due to licensing constraints we cannot distribute jGrasp at this time.\n
 Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
 Please note that the JDK is already installed and accesibble on your system."
             mysql_secure_installation
