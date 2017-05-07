@@ -100,7 +100,7 @@ This script will install ruby, eclipse, Spin, sqlite3, plantUML, gitk and MIT Al
                 esac
             done
             dnf install -y eclipse-jdt ruby sqlite plantuml gitk geany
-            bash /usr/local/bin/se/spin.sh && bash /usr/bin/tigeros/se/alloy.sh 
+            bash /usr/local/bin/se/spin.sh && bash /usr/local/bin/se/alloy.sh 
             echo "Install finished"
             exit
             ;;

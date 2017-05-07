@@ -51,7 +51,6 @@ This script will remove mysql, mongodb, subversion, filezilla, and nodejs from y
             done
             sudo dnf -y remove mongodb subversion filezilla nodejs php mysql-repo.rpm mysql-community-server
             semanage port -d -t mongod_port_t -p tcp 27017
-            firewall-cmd --del-port=22017/tcp --permanent && firewall-cmd --reload
             echo "Removal finished."
             exit
             ;;
