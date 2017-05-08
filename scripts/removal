@@ -51,7 +51,6 @@ This script will remove mysql, mongodb, subversion, filezilla, and nodejs from y
             done
             sudo dnf -y remove mongodb subversion filezilla nodejs php mysql-repo.rpm mysql-community-server
             semanage port -d -t mongod_port_t -p tcp 27017
-            firewall-cmd --del-port=22017/tcp --permanent && firewall-cmd --reload
             echo "Removal finished."
             exit
             ;;
@@ -66,7 +65,7 @@ This script will remove wireshark, python 2.7, and python 3 from your machine."
                     [Nn]* ) exit;;
                 esac
             done
-            sudo dnf -y remove wireshark
+            sudo dnf -y remove wireshark --ignore-missing
             echo "Removal finished."
             exit
             ;;
@@ -81,7 +80,7 @@ This script will remove ruby, eclipse, Spin, sqlite3 and MIT Alloy from your mac
                     [Nn]* ) exit;;
                 esac
             done
-            sudo dnf -y remove eclipse-jdt ruby sqlite gitk plantuml
+            sudo dnf -y remove eclipse-jdt ruby sqlite gitk plantuml --ignore-missing
             bash /usr/local/bin/se/spin.sh --remove       
             bash /usr/local/bin/se/alloy.sh --remove
             echo "Removal finished."

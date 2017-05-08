@@ -7,7 +7,7 @@
 # Check that the current user is root
 if [ $EUID != 0 ]
 then
-    echo "Please run this script as root ( $@$0)."
+    echo "Please run this script as root (sudo $@$0)."
     exit
 fi
 echo
@@ -15,7 +15,7 @@ echo -e "Welcome to the TigerOS post install script.\n
 This script will walk you through initial configuration of TigerOS including installing a set of packages used for classes in your major."
 echo
 find /home -name "tigeros-postinstall.desktop" -exec rm {} + 2>/dev/null
-#bash /usr/local/bin/enablerpmfusion
+bash /usr/local/bin/enablerpmfusion
 PS3='Please enter a number: '
 options=("CS" "IT/WMC" "NSSA/CIT" "SE" "Quit")
 select opt in "${options[@]}"
@@ -60,10 +60,11 @@ This script will install mysql, mongodb, subversion, filezilla, and nodejs on yo
             dnf install -y mongodb
             semanage port -a -t mongod_port_t -p tcp 27017
             dnf install -y subversion filezilla nodejs java-1.8.0-openjdk
-            echo -e "Due to licensing constraints we cannot distribute jGrasp at this time. \n
+            echo -e "Due to licensing constraints we cannot distribute jGrasp at this time.\n
 Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
 Please note that the JDK is already installed and accesibble on your system."
             mysql_secure_installation
+            rm mysql-repo.rpm
             echo "Install finished"
             exit
             ;;
@@ -81,7 +82,7 @@ This script will install wireshark, python 2.7, and python 3 on your machine."
             dnf install -y wireshark-gtk python python3 java-1.8.0-openjdk
             groupadd wireshark
             usermod -aG wireshark $USER
-            echo "Due to licensing constraints we cannot distribute jGrasp at this time.\n
+            echo -e "Due to licensing constraints we cannot distribute jGrasp at this time.\n
 Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
 Please note that the JDK is already installed and accessible on your system."
             echo "Install finished"
@@ -99,7 +100,7 @@ This script will install ruby, eclipse, Spin, sqlite3, plantUML, gitk and MIT Al
                 esac
             done
             dnf install -y eclipse-jdt ruby sqlite plantuml gitk geany
-            bash /usr/local/bin/se/spin.sh && bash /usr/bin/tigeros/se/alloy.sh 
+            bash /usr/local/bin/se/spin.sh && bash /usr/local/bin/se/alloy.sh 
             echo "Install finished"
             exit
             ;;
