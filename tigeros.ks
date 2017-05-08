@@ -356,7 +356,7 @@ EOF
 
 # Fetch scripts
 chmod +x /usr/local/bin/\*
-
+gsettings set org.cinnamon.desktop.background picture-uri  "file:///usr/share/backgrounds/tigeros/wallpaper2-1920-1080.jpg"
 restorecon -R /usr/local/bin
 %end
 
