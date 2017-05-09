@@ -401,7 +401,7 @@ rpmfusion-free-release
 scrot
 syslinux
 tigeros-backgrounds
-tigeros-bookmarks
+tigeros-ff-profile
 tigeros-logos
 tigeros-release
 tigeros-repos
