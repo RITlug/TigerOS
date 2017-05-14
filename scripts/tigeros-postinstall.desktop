@@ -2,6 +2,6 @@
 Version=1.0
 Type=Application
 Name=TigerOS postinstall script
-Comment=First run post install onfigurations
+Comment=First run post-install configurations
 Exec=gnome-terminal -e "sudo /usr/local/bin/postinstall" --window-with-profile="First Run"
 Terminal=true
