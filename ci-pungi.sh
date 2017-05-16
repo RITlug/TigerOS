@@ -24,7 +24,7 @@ mock -r fedora-25-x86_64 --copyout /25/source/iso/TigerOS-DVD-Source-25.iso /srv
 rm -rf /var/lib/mock/
 cd /srv/isos
 rm -rf CHECKSUM512-source-$(date +%Y%m%d)
-sha512sum TigerOS-source-$(date +%Y%m%d).iso > CHECKSUM512-$(date +%Y%m%d) 
+sha512sum TigerOS-source-$(date +%Y%m%d).iso > CHECKSUM512-source-$(date +%Y%m%d) 
 chown -R nginx:nginx /srv
 chmod 755 /srv/isos/*.iso
 echo "Pungi finished"
