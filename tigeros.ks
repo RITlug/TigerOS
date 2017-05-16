@@ -383,7 +383,8 @@ f24-backgrounds-extras-gnome
 generic-release-notes
 gimp
 glibc-all-langpacks
-google-chrome-stable
+#remove chrome until we verify licensing 
+#google-chrome-stable
 grub2-efi
 gscreenshot
 hexchat
