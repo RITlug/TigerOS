@@ -14,7 +14,7 @@ repo --name="updates" --mirrorlist=http://mirrors.fedoraproject.org/metalink?rep
 repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch
 repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
 repo --name="google-chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
-repo --name="tigeros" --baseurl=http://tigeros.ritlug.com/packages/$basearch/
+repo --name="tigeros" --baseurl=https://tigeros.ritlug.com/packages/$basearch/
 # Shutdown after installation
 shutdown
 # Network information
