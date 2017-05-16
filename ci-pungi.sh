@@ -18,9 +18,9 @@ wget -O tigeros-source.ks https://raw.githubusercontent.com/RITlug/TigerOS/maste
 mock -r fedora-25-x86_64 --init
 mock -r fedora-25-x86_64 --copyin tigeros-source.ks ./tigeros-source.ks
 mock -r fedora-25-x86_64 --install pungi
-mock -r fedora-25-x86_64 --chroot "pungi -G -c tigeros-source.ks --name=TigerOS --force && pungi -C -c tigeros-source.ks --name=TigerOS --force && pungi -I -c tigeros-source.ks --name=TigerOS --ver=$(date +%Y%m%d)--sourceisos --force"
+mock -r fedora-25-x86_64 --chroot "pungi -G -c tigeros-source.ks --name=TigerOS --ver 25 --force && pungi -C -c tigeros-source.ks --name=TigerOS --ver=25 --force && pungi -I -c tigeros-source.ks --name=TigerOS --ver=25 --sourceisos --force"
 rm -rf /srv/isos/TigerOS-source-$(date +%Y%m%d).iso
-mock -r fedora-25-x86_64 --copyout /var/lmc/TigerOS.iso /srv/isos/TigerOS-$(date +%Y%m%d).iso 
+mock -r fedora-25-x86_64 --copyout /var/lmc/TigerOS-DVD-Source-25.iso /srv/isos/TigerOS-source-$(date +%Y%m%d).iso 
 rm -rf /var/lib/mock/
 cd /srv/isos
 rm -rf CHECKSUM512-source-$(date +%Y%m%d)
