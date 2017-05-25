@@ -363,7 +363,8 @@ EOF
 
 # TigerOS specific setup
 chmod +x /usr/local/bin/\*
-gsettings set org.cinnamon.desktop.background picture-filename  "file:///usr/share/backgrounds/tigeros/wallpaper2-1920x1080.jpg"
+gsettings set org.cinnamon.desktop.background picture-uri  "file:///usr/share/backgrounds/tigeros/wallpaper2-1920x1080.jpg"
+rm /home/liveuser/.config/autostart/tigeros-postinstall.desktop
 restorecon -R /usr/local/bin
 %end
 
