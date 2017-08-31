@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
-# JFLAP installer script for TigerOS
-# author: Josh Bicking <jhb2345@rit.edu>
+# logisim installer script for TigerOS
+# author: Aidan Kahrs <axk4545@rit.edu>
 
 DEPS=java-1.8.0-openjdk
 PROG=Logisim
@@ -54,7 +54,7 @@ EOF
 Type=Application
 Version=2.3.1
 Name=$PROG
-Comment=A grahical tool for designing and simulating logic circuits.
+Comment=A graphical tool for designing and simulating logic circuits.
 Path=
 Exec=$LINK
 Icon=/usr/local/share/icons/$PROG.jpg
