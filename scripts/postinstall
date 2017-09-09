@@ -33,7 +33,9 @@ This script will install Intellij IDEA, PyCharm, PROLOG, Racket, Logisim and JFL
                 esac
             done
             bash /usr/local/bin/cs/idea.sh
-            dnf copr enable -y phracek/PyCharm; dnf install pycharm-community;
+	    #TODO fix this when copr is stable
+            #dnf copr enable -y phracek/PyCharm; dnf install pycharm-community;
+	    dnf install https://copr-be.cloud.fedoraproject.org/results/phracek/PyCharm/fedora-25-x86_64/00549395-pycharm-community/pycharm-community-2017.1.2-1.fc25.x86_64.rpm https://copr-be.cloud.fedoraproject.org/results/phracek/PyCharm/fedora-25-x86_64/00549395-pycharm-community/pycharm-community-plugins-2017.1.2-1.fc25.x86_64.rpm
             # TODO PROLOG
             wget https://mirror.racket-lang.org/installers/6.8/racket-6.8-x86_64-linux.sh
             chmod +x racket-6.8-x86_64-linux.sh

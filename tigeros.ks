@@ -3,8 +3,10 @@
 xconfig  --startxonboot
 # Keyboard layouts
 keyboard 'us'
+# Root password
+rootpw --iscrypted --lock locked
 # Use network installation
-url --mirrorlist="https://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch"
+url --mirrorlist="https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=$basearch"
 # System language
 lang en_US.UTF-8
 # Firewall configuration
@@ -244,8 +246,8 @@ fi
 if [ -n "\$xdriver" ]; then
    cat > /etc/X11/xorg.conf.d/00-xdriver.conf <<FOE
 Section "Device"
-  Identifier  "Videocard0"
-  Driver  "\$xdriver"
+	Identifier	"Videocard0"
+	Driver	"\$xdriver"
 EndSection
 FOE
 fi
@@ -383,7 +385,7 @@ aajohan-comfortaa-fonts
 anaconda
 desktop-backgrounds-basic
 dracut-live
-f24-backgrounds-extras-gnome
+f26-backgrounds-extras-gnome
 generic-release-notes
 gimp
 glibc-all-langpacks

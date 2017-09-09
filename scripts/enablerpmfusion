@@ -12,7 +12,7 @@ echo "This script will enable the RPMFusion repositories for nonfree or patent e
 while true; do
     read -p "Do you wish to continue? [y/n] " yn
     case $yn in
-         [Yy]* ) dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm;;
+         [Yy]* ) dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && exit;;
         [Nn]* ) exit;;
     esac
 done
