@@ -384,6 +384,7 @@ restorecon -R /home/liveuser
 @standard
 aajohan-comfortaa-fonts
 anaconda
+anaconda-installclass-tigeros
 desktop-backgrounds-basic
 dracut-live
 f26-backgrounds-extras-gnome
