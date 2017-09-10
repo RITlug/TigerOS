@@ -21,7 +21,7 @@ repo --name="updates-source" --baseurl=http://download.fedoraproject.org/pub/fed
 repo --name="tigeros-source" --baseurl=https://tigeros.ritlug.com/packages/source/
 repo --name="rpmfusion-free-source" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/$releasever/Everything/source/SRPMS/
 repo --name="rpmfusion-free-updates-source" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/$releasever/SRPMS/
-
+repo --name="Copr repo for gscreenshot owned by thenaterhood" --baseurl=https://copr-be.cloud.fedoraproject.org/results/thenaterhood/gscreenshot/fedora-$releasever-$basearch/
 # Shutdown after installation
 shutdown
 # Network information

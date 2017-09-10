@@ -17,6 +17,7 @@ repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlis
 repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
 repo --name="google-chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
 repo --name="tigeros" --baseurl=https://tigeros.ritlug.com/packages/$basearch/
+repo --name="Copr repo for gscreenshot owned by thenaterhood" --baseurl=https://copr-be.cloud.fedoraproject.org/results/thenaterhood/gscreenshot/fedora-$releasever-$basearch/
 # Shutdown after installation
 shutdown
 # Network information
