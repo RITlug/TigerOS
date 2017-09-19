@@ -24,7 +24,7 @@ mock -r fedora-26-x86_64 --install lorax-lmc-novirt git vim-minimal pykickstart
 echo "${green}Beginning build process${reset}"
 #setenforce 0
 #livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project TigerOS-Live --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever 26 --title TigerOS-live --macboot
-mock -r fedora-26-x86_64 --chroot "livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project TigerOS-Live --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever 26 --title TigerOS-live --macboot"
+mock -r fedora-26-x86_64 --chroot "livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project \"Fedora TigerOS-Live\" --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever 26 --title TigerOS-live --macboot"
 mock -r fedora-26-x86_64 --copyout /var/lmc/TigerOS.iso TigerOS.iso
 echo "${green}ISO saved to $(pwd)/TigerOS.iso${reset}"
 #setenforce 1
