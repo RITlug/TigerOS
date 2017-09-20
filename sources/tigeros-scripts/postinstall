@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# TigerOS postinstall package setup script
+# author: Aidan Kahrs <axk4545@rit.edu>
+
+
+# Check that the current user is root
+if [ $EUID != 0 ]
+then
+    echo "Please run this script as root (sudo $@$0)."
+    exit
+fi
+echo
+echo -e "Welcome to the TigerOS post install script.\n
+This script will walk you through initial configuration of TigerOS including installing a set of packages used for classes in your major."
+echo
+find /home -name "tigeros-postinstall.desktop" -exec rm {} + 2>/dev/null
+bash /usr/local/bin/enablerpmfusion
+PS3='Please enter a number: '
+options=("CS" "IT/WMC" "NSSA/CIT" "SE" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "CS")
+            echo -e "Welcome to the TigerOS CS package installer script.\n 
+This script will install Intellij IDEA, PyCharm, PROLOG, Racket, Logisim and JFLAP on your machine."
+            echo
+            while true; do
+                read -p "Do you wish to continue? [y/n] " yn
+                case $yn in
+                    [Yy]* ) break;;
+                    [Nn]* ) exit;;
+                esac
+            done
+            bash /usr/local/bin/cs/idea.sh
+	    #TODO fix this when copr is stable
+            #dnf copr enable -y phracek/PyCharm; dnf install pycharm-community;
+	    dnf install https://copr-be.cloud.fedoraproject.org/results/phracek/PyCharm/fedora-25-x86_64/00549395-pycharm-community/pycharm-community-2017.1.2-1.fc25.x86_64.rpm https://copr-be.cloud.fedoraproject.org/results/phracek/PyCharm/fedora-25-x86_64/00549395-pycharm-community/pycharm-community-plugins-2017.1.2-1.fc25.x86_64.rpm
+            # TODO PROLOG
+            wget https://mirror.racket-lang.org/installers/6.8/racket-6.8-x86_64-linux.sh
+            chmod +x racket-6.8-x86_64-linux.sh
+            bash racket-6.8-x86_64-linux.sh
+            bash /usr/local/bin/cs/logisim.sh
+            bash /usr/local/bin/cs/jflap.sh
+            exit
+            ;;
+        "IT/WMC")
+            echo -e "Welcome to the TigerOS IT/WMC package installer script.\n
+This script will install mysql, mongodb, subversion, filezilla, and nodejs on your machine."
+            echo
+            while true; do
+                read -p "Do you wish to continue? [y/n] " yn
+                case $yn in
+                    [Yy]* ) break;;
+                    [Nn]* ) exit;;
+                esac
+            done
+            wget https://dev.mysql.com/get/mysql57-community-release-fc25-9.noarch.rpm -O mysql-repo.rpm
+            dnf install -y mysql-repo.rpm
+            dnf install -y mysql-community-server
+            echo "mysql installed see "https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/" for further instructions. Start at step 4."
+            dnf install -y mongodb
+            semanage port -a -t mongod_port_t -p tcp 27017
+            dnf install -y subversion filezilla nodejs java-1.8.0-openjdk
+            echo -e "Due to licensing constraints we cannot distribute jGrasp at this time.\n
+Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
+Please note that the JDK is already installed and accesibble on your system."
+            mysql_secure_installation
+            rm mysql-repo.rpm
+            echo "Install finished"
+            exit
+            ;;
+        "NSSA/CIT")
+            echo -e "Welcome to the TigerOS NSSA/CIT package installer script.\n 
+This script will install wireshark, python 2.7, and python 3 on your machine."
+            echo
+            while true; do
+                read -p "Do you wish to continue? [y/n] " yn
+                case $yn in
+                    [Yy]* ) break;;
+                    [Nn]* ) exit;;
+                esac
+            done
+            dnf install -y wireshark-gtk python python3 java-1.8.0-openjdk
+            groupadd wireshark
+            usermod -aG wireshark $USER
+            echo -e "Due to licensing constraints we cannot distribute jGrasp at this time.\n
+Please see http://spider.eng.auburn.edu/user-cgi/grasp/grasp.pl?;dl=download_jgrasp.html for download instructions.\n
+Please note that the JDK is already installed and accessible on your system."
+            echo "Install finished"
+            exit
+            ;;
+        "SE")
+            echo -e "Welcome to the TigerOS SE package installer script.\n
+This script will install ruby, eclipse, Spin, sqlite3, plantUML, gitk and MIT Alloy on your machine."
+            echo
+            while true; do
+                read -p "Do you wish to continue? [y/n] " yn
+                case $yn in
+                    [Yy]* ) break;;
+                    [Nn]* ) exit;;
+                esac
+            done
+            dnf install -y eclipse-jdt ruby sqlite plantuml gitk geany
+            bash /usr/local/bin/se/spin.sh && bash /usr/local/bin/se/alloy.sh 
+            echo "Install finished"
+            exit
+            ;;
+        "Quit")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
