@@ -19,7 +19,7 @@ then
     exit
 fi
 mock -r fedora-26-x86_64 --init
-mock -r fedora-26-x86_64 --copyin tigeros.ks ./tigeros.ks
+mock -r fedora-26-x86_64 --copyin kickstarts/tigeros.ks ./tigeros.ks
 mock -r fedora-26-x86_64 --install lorax-lmc-novirt git vim-minimal pykickstart
 echo "${green}Beginning build process${reset}"
 #setenforce 0
