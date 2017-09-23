@@ -16,8 +16,8 @@ repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/m
 repo --name="google-chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
 repo --name="tigeros" --baseurl=https://tigeros.ritlug.com/packages/$basearch/
 # Source repos
-repo --name="source"  --baseurl=http://download.fedoraproject.org/pub/fedora/linux/releases/$releasever/Everything/source/tree/
-repo --name="updates-source" --baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/$releasever/SRPMS/
+repo --name="source"  --baseurl=http://mirror.cc.vt.edu/pub/fedora/linux/releases/$releasever/Everything/source/tree/
+repo --name="updates-source" --baseurl=http://mirror.cc.vt.edu/pub/fedora/linux/updates/$releasever/SRPMS/
 repo --name="tigeros-source" --baseurl=https://tigeros.ritlug.com/packages/source/
 repo --name="rpmfusion-free-source" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/$releasever/Everything/source/SRPMS/
 repo --name="rpmfusion-free-updates-source" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/$releasever/SRPMS/
