@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=TigerOS postinstall script
+Comment=First run post install onfigurations
+Exec=gnome-terminal -e "sudo /usr/local/bin/postinstall" 
+Terminal=false

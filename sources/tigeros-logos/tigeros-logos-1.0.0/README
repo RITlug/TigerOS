@@ -1,0 +1,15 @@
+generic-logos - A replacement for fedora-logos
+==============================================
+
+The generic-logos package contains various image files which can be
+used by the bootloader, anaconda, and other related tools. It can
+be used as a replacement for the fedora-logos package, if you are
+unable for any reason to abide by the trademark restrictions on the
+fedora-logos package.
+
+Homepage: https://fedorahosted.org/generic-logos/
+Source:   https://fedorahosted.org/releases/g/e/generic-logos/
+CVS:      https://fedorahosted.org/generic-logos/browser
+
+generic-logos is licensed under GPLv2 and LGPl, for more details check
+COPYING and COPYING-kde-logo. 

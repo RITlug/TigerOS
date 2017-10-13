@@ -1,0 +1,8 @@
+splash.xpm.gz: the splashscreen used by grub.
+
+Format requirements:
+
+640x480, 15 colors, XPM format. Note that the grub text is defined to be
+white, highlighted in black, so keep contrast in mind.
+
+grub does not use descriptive color names; if using ppmtoxpm, pass -hexonly.

@@ -1,0 +1,20 @@
+Generated File. Do not edit.
+
+[HEADER]
+Version:0.18t:$
+Arch:x86_64-gcc3:$
+
+[PLUGINS]
+libflashplayer.so:$
+/usr/lib64/flash-plugin/libflashplayer.so:$
+25.0.0.148:$
+1490381526000:0:0:0:$
+Shockwave Flash 25.0 r0:$
+Shockwave Flash:$
+2
+0:application/x-shockwave-flash:Shockwave Flash:swf:$
+1:application/futuresplash:FutureSplash Player:spl:$
+
+[INVALID]
+/usr/lib64/mozilla/plugins/librhythmbox-itms-detection-plugin.so:$
+1473610242000:$

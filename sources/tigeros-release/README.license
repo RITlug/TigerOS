@@ -1,0 +1,16 @@
+= License =
+
+Fedora is a compilation of software packages, each under its own
+license.  The compilation itself is released under the MIT license
+(see the file LICENSE). However, this compilation license does not
+supersede the licenses of code and content contained in Fedora, which
+conform to the legal guidelines described at
+https://fedoraproject.org/wiki/Licensing:Main?rd=Licensing.
+
+If you're using generic-release, you're probably remixing the packages
+from Fedora into a release that is _NOT_ Fedora. The license of the 
+generic-release package is MIT, as described in LICENSE, or found here: 
+https://fedoraproject.org/wiki/Licensing:MIT#Modern_Style_with_sublicense 
+
+Red Hat does not claim any compilation copyright on any compilations of 
+software that we do not directly create and distribute.

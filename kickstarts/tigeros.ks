@@ -11,11 +11,10 @@ url --mirrorlist="https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$rele
 lang en_US.UTF-8
 # Firewall configuration
 firewall --enabled --service=mdns
-repo --name="fedora" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo=fedora-$releasever&arch=$basearch
-repo --name="updates" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
+repo --name="fedora" --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=$basearch
+repo --name="updates" --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=$basearch
 repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch
 repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
-repo --name="google-chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
 repo --name="tigeros" --baseurl=https://tigeros.ritlug.com/packages/$basearch/
 repo --name="Copr repo for gscreenshot owned by thenaterhood" --baseurl=https://copr-be.cloud.fedoraproject.org/results/thenaterhood/gscreenshot/fedora-$releasever-$basearch/
 # Shutdown after installation
@@ -39,7 +38,7 @@ zerombr
 clearpart --all
 # Disk partitioning information
 part / --fstype="ext4" --size=5120
-part / --size=6144
+part / --size=6656
 
 %post
 # FIXME: it'd be better to get this installed from a package
@@ -247,8 +246,8 @@ fi
 if [ -n "\$xdriver" ]; then
    cat > /etc/X11/xorg.conf.d/00-xdriver.conf <<FOE
 Section "Device"
-	Identifier	"Videocard0"
-	Driver	"\$xdriver"
+  Identifier  "Videocard0"
+  Driver  "\$xdriver"
 EndSection
 FOE
 fi
@@ -324,59 +323,77 @@ fi
 %end
 
 %post
-# cinnamon configuration
-
-# create /etc/sysconfig/desktop (needed for installation)
-
-cat > /etc/sysconfig/desktop <<EOF
-PREFERRED=/usr/bin/cinnamon-session
-DISPLAYMANAGER=/usr/sbin/lightdm
-EOF
 
 cat >> /etc/rc.d/init.d/livesys << EOF
 
-# set up lightdm autologin
-sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
-sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
-#sed -i 's/^#show-language-selector=.*/show-language-selector=true/' /etc/lightdm/lightdm-gtk-greeter.conf
 
-# set Cinnamon as default session, otherwise login will fail
-sed -i 's/^#user-session=.*/user-session=cinnamon/' /etc/lightdm/lightdm.conf
+# disable updates plugin
+cat >> /usr/share/glib-2.0/schemas/org.gnome.software.gschema.override << FOE
+[org.gnome.software]
+download-updates=false
+FOE
 
-# Show harddisk install on the desktop
-sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
-mkdir /home/liveuser/Desktop
-cp /usr/share/applications/liveinst.desktop /home/liveuser/Desktop
+# don't run gnome-initial-setup
+mkdir ~liveuser/.config
+touch ~liveuser/.config/gnome-initial-setup-done
 
-# and mark it as executable
-chmod +x /home/liveuser/Desktop/liveinst.desktop
+# make the installer show up
+if [ -f /usr/share/applications/liveinst.desktop ]; then
+  # Show harddisk install in shell dash
+  sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop ""
+  # need to move it to anaconda.desktop to make shell happy
+  mv /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
 
-# this goes at the end after all other changes. 
-chown -R liveuser:liveuser /home/liveuser
-restorecon -R /home/liveuser
+  cat >> /usr/share/glib-2.0/schemas/org.gnome.shell.gschema.override << FOE
+[org.gnome.shell]
+favorite-apps=['firefox.desktop', 'evolution.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'org.gnome.Nautilus.desktop', 'anaconda.desktop']
+FOE
+
+  # Make the welcome screen show up
+  if [ -f /usr/share/anaconda/gnome/fedora-welcome.desktop ]; then
+    mkdir -p ~liveuser/.config/autostart
+    cp /usr/share/anaconda/gnome/fedora-welcome.desktop /usr/share/applications/
+    cp /usr/share/anaconda/gnome/fedora-welcome.desktop ~liveuser/.config/autostart/
+  fi
+
+  # Copy Anaconda branding in place
+  if [ -d /usr/share/lorax/product/usr/share/anaconda ]; then
+    cp -a /usr/share/lorax/product/* /
+  fi
+fi
+
+# rebuild schema cache with any overrides we installed
+glib-compile-schemas /usr/share/glib-2.0/schemas
+
+# set up auto-login
+cat > /etc/gdm/custom.conf << FOE
+[daemon]
+AutomaticLoginEnable=True
+AutomaticLogin=liveuser
+FOE
+
+# Turn off PackageKit-command-not-found while uninstalled
+if [ -f /etc/PackageKit/CommandNotFound.conf ]; then
+  sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
+fi
+
+# make sure to set the right permissions and selinux contexts
+chown -R liveuser:liveuser /home/liveuser/
+restorecon -R /home/liveuser/
 
 EOF
-
-# TigerOS specific setup
-chmod +x /usr/local/bin/\*
-#gsettings set org.cinnamon.desktop.background picture-uri  "file:///usr/share/backgrounds/tigeros/wallpaper2-1920x1080.jpg"
-rm -rf /home/liveuser/.config/autostart/tigeros-postinstall.desktop
-restorecon -R /usr/local/bin
-chown -R liveuser:liveuser /home/liveuser
-restorecon -R /home/liveuser
 
 %end
 
 %packages
 @anaconda-tools
 @base-x
-@cinnamon-desktop
 @core
-@dial-up
+@firefox
 @fonts
+@gnome-desktop
 @guest-desktop-agents
 @hardware-support
-@input-methods
 @libreoffice
 @multimedia
 @networkmanager-submodules
@@ -384,23 +401,23 @@ restorecon -R /home/liveuser
 @standard
 aajohan-comfortaa-fonts
 anaconda
-anaconda-installclass-tigeros
-desktop-backgrounds-basic
 dracut-live
-f26-backgrounds-extras-gnome
+glibc-all-langpacks
+grub2-efi
+kernel
+kernel-modules
+kernel-modules-extra
+memtest86+
+syslinux
+anaconda-installclass-tigeros
+chromium
 generic-release-notes
 gimp
 glibc-all-langpacks
-#remove chrome until we verify licensing 
-#google-chrome-stable
-grub2-efi
 gscreenshot
 hexchat
 htop
 inkscape
-kernel
-kernel-modules
-kernel-modules-extra
 lynx
 memtest86+
 parole
@@ -408,7 +425,6 @@ pidgin
 rhythmbox
 rpmfusion-free-release
 scrot
-syslinux
 tigeros-backgrounds
 tigeros-ff-profile
 tigeros-logos
@@ -420,7 +436,10 @@ vim
 wget
 yumex-dnf
 zsh
-#exclude things (packagekit breaks things, fedora-* packages are replaced by ones we customized.)
+-@dial-up
+-@input-methods
+-gfs2-utils
+-reiserfs-utils
 -PackageKit*
 -autofs
 -coolkey
@@ -444,5 +463,4 @@ zsh
 -system-config-services
 -xsane
 -xsane-gimp
-
 %end
