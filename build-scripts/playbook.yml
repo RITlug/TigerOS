@@ -23,3 +23,56 @@
         - vim
         # need to get anaconda install class for TigerOS possibly
         #- letsencrypt
+    - name: Allow HTTPS (nginx)
+      firewalld:
+        service: https
+        permanent: true
+        state: enabled
+    - name: Allow HTTP (nginx)
+      firewalld:
+        service: http
+        permanent: true
+        state: enabled
+    - name: Allow SSH access
+      firewalld:
+        service: ssh
+        permanent: true
+        state: enabled
+    - name: Allow 8080 (Jenkins)
+      firewalld:
+        port: 8080/tcp
+        permanent: true
+        state: enabled
+    - name: Allow Cockpit
+      firewalld:
+        service: cockpit
+        permanent: true
+        state: enabled
+    - name: Enable nginx service
+      systemd:
+        name: nginx
+        enabled: yes
+        state: started
+    - name: Enable Jenkins service
+      systemd:
+        name: jenkins
+        enabled: yes
+        state: started
+    - name: Enable Cockpit service
+      systemd:
+        name: cockpit
+        enabled: yes
+        state: started
+    - name: Enable sshd (openssh-server) service
+      systemd:
+        name: sshd
+        enabled: yes
+        state: started
+    - name: Enable fail2ban service
+      systemd:
+        name: fail2ban
+        enabled: yes
+        state: started
+    - name: Reload Firewall
+      command: firewall-cmd --reload
+      become: true
