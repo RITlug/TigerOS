@@ -77,3 +77,6 @@
     - name: Reload Firewall
       command: firewall-cmd --reload
       become: true
+    - name: Update packages
+      command: dnf update
+      become: true
