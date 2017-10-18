@@ -21,6 +21,7 @@
         - dnf-automatic
         - mosh
         - vim
+        - python-firewall
         # need to get anaconda install class for TigerOS possibly
         #- letsencrypt
     - name: Allow HTTPS (nginx)
