@@ -19,7 +19,7 @@ mock --old-chroot -r fedora-26-x86_64 --init
 mock --old-chroot -r fedora-26-x86_64 --copyin tigeros.ks ./tigeros.ks
 mock --old-chroot -r fedora-26-x86_64 --install lorax-lmc-novirt git vim-minimal pykickstart
 mock --old-chroot -r fedora-26-x86_64 --install https://tigeros.ritlug.com/packages/x86_64/anaconda-installclass-tigeros-26-1.fc26.x86_64.rpm
-mock --old-chroot -r fedora-26-x86_64 --chroot "livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project TigerOS-Live --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever 26 --title TigerOS-live --macboot --efi"
+mock --old-chroot -r fedora-26-x86_64 --chroot "livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project TigerOS-Live --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever 26 --title TigerOS-live --macboot"
 rm -rf /srv/isos/TigerOS-$(date +%Y%m%d).iso
 mock --old-chroot -r fedora-26-x86_64 --copyout /var/lmc/TigerOS.iso /srv/isos/TigerOS-$(date +%Y%m%d).iso 
 rm -rf /var/lib/mock/
