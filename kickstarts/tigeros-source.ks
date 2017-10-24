@@ -13,7 +13,6 @@ repo --name="fedora" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo
 repo --name="updates" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
 repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch
 repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
-repo --name="google-chrome" --baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
 repo --name="tigeros" --baseurl=https://tigeros.ritlug.com/packages/$basearch/
 # Source repos
 repo --name="source"  --baseurl=http://mirror.cc.vt.edu/pub/fedora/linux/releases/$releasever/Everything/source/tree/
@@ -373,13 +372,12 @@ restorecon -R /home/liveuser
 %packages
 @anaconda-tools
 @base-x
-@cinnamon-desktop
 @core
-@dial-up
+@firefox
 @fonts
+@gnome-desktop
 @guest-desktop-agents
 @hardware-support
-@input-methods
 @libreoffice
 @multimedia
 @networkmanager-submodules
@@ -387,23 +385,24 @@ restorecon -R /home/liveuser
 @standard
 aajohan-comfortaa-fonts
 anaconda
-anaconda-installclass-tigeros
-desktop-backgrounds-basic
 dracut-live
-f24-backgrounds-extras-gnome
-generic-release-notes
-gimp
 glibc-all-langpacks
-#remove chrome until we verify licensing 
-#google-chrome-stable
 grub2-efi
-gscreenshot
-hexchat
-htop
-inkscape
 kernel
 kernel-modules
 kernel-modules-extra
+memtest86+
+syslinux
+anaconda-installclass-tigeros
+chromium
+generic-release-notes
+gimp
+glibc-all-langpacks
+gscreenshot
+gstreamer1-plugin-mpg123
+hexchat
+htop
+inkscape
 lynx
 memtest86+
 parole
@@ -411,7 +410,6 @@ pidgin
 rhythmbox
 rpmfusion-free-release
 scrot
-syslinux
 tigeros-backgrounds
 tigeros-ff-profile
 tigeros-logos
@@ -423,7 +421,10 @@ vim
 wget
 yumex-dnf
 zsh
-#exclude things (packagekit breaks things, fedora-* packages are replaced by ones we customized.)
+-@dial-up
+-@input-methods
+-gfs2-utils
+-reiserfs-utils
 -PackageKit*
 -autofs
 -coolkey
@@ -432,6 +433,7 @@ zsh
 -fedora-logos
 -fedora-release
 -fedora-release-notes
+-gstreamer1-plugins-ugly
 -gnome-screenshot
 -hplip
 -isdn4k-utils
@@ -447,5 +449,4 @@ zsh
 -system-config-services
 -xsane
 -xsane-gimp
-
 %end

@@ -415,6 +415,7 @@ generic-release-notes
 gimp
 glibc-all-langpacks
 gscreenshot
+gstreamer1-plugin-mpg123
 hexchat
 htop
 inkscape
@@ -448,6 +449,7 @@ zsh
 -fedora-logos
 -fedora-release
 -fedora-release-notes
+-gstreamer1-plugins-ugly
 -gnome-screenshot
 -hplip
 -isdn4k-utils

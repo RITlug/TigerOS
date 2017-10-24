@@ -4,12 +4,14 @@ repo --name="tigeros" --baseurl=https://tigeros.ritlug.com/packages/$basearch/
 repo --name="Copr repo for gscreenshot owned by thenaterhood" --baseurl=https://copr-be.cloud.fedoraproject.org/results/thenaterhood/gscreenshot/fedora-$releasever-$basearch/
 
 
+
 anaconda-installclass-tigeros
 chromium
 generic-release-notes
 gimp
 glibc-all-langpacks
 gscreenshot
+gstreamer1-plugin-mpg123
 hexchat
 htop
 inkscape
@@ -31,7 +33,10 @@ vim
 wget
 yumex-dnf
 zsh
-#exclude things (packagekit breaks things, fedora-* packages are replaced by ones we customized.)
+-@dial-up
+-@input-methods
+-gfs2-utils
+-reiserfs-utils
 -PackageKit*
 -autofs
 -coolkey
@@ -40,6 +45,7 @@ zsh
 -fedora-logos
 -fedora-release
 -fedora-release-notes
+-gstreamer1-plugins-ugly
 -gnome-screenshot
 -hplip
 -isdn4k-utils
