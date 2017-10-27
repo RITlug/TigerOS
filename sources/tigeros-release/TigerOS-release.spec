@@ -1,5 +1,5 @@
 %global release_name TigerOS
-%global dist_version 25
+%global dist_version 26
 
 Summary:        TigerOS release files
 Name:           tigeros-release
