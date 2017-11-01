@@ -80,11 +80,17 @@
     - name: Update packages
       command: dnf update
       become: true
-    - name: Allow Jenkins sudo access
+    - name: Allow Jenkins sudo access for devel
       become: true
       lineinfile:
         path: /etc/sudoers
         line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Devel/workspace/tigeros/make-iso.sh'
+        state: present
+    - name: Allow Jenkins sudo access for master
+      become: true
+      lineinfile:
+        path: /etc/sudoers
+        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Master/workspace/tigeros/make-iso.sh'
         state: present
     - jenkins_job:
         name: TigerOS-Master
