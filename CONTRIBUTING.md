@@ -3,6 +3,7 @@ TigerOS
 
 ## Contributing
 Please fork this repository and submit pull requests against the devel branch. Pull requests will be reviewed as time permits.
+Depending on the change you may also fork the repo and submit your PR against a new feature branch that you created. This is preferred if adding new code or items and not just modifying existing contents of the repo.
 Some things to keep in mind:
 * Due to this being a student run project, there may be a delay in getting a response from the developers.
 * All scripts added to github should have 644 permissions.
