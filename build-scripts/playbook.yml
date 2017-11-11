@@ -22,6 +22,7 @@
         - mosh
         - vim
         - python-firewall
+#        - python-jenkins
         # need to get anaconda install class for TigerOS possibly
         #- letsencrypt
     - name: Allow HTTPS (nginx)
@@ -92,9 +93,9 @@
         path: /etc/sudoers
         line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Master/workspace/tigeros/make-iso.sh'
         state: present
-    - jenkins_job:
-        name: TigerOS-Master
-        state: present
-    - jenkins_job:
-        name: TigerOS-Devel
-        state: present
+#    - jenkins_job:
+#        name: TigerOS-Master
+#        state: present
+#    - jenkins_job:
+#        name: TigerOS-Devel
+#        state: present
