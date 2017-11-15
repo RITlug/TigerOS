@@ -85,13 +85,13 @@
       become: true
       lineinfile:
         path: /etc/sudoers
-        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Devel/workspace/tigeros/make-iso.sh'
+        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Devel/workspace/tigeros/build-scripts/ci-build-mock.sh'
         state: present
     - name: Allow Jenkins sudo access for master
       become: true
       lineinfile:
         path: /etc/sudoers
-        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Master/workspace/tigeros/make-iso.sh'
+        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Master/workspace/tigeros/build-scripts/ci-build-mock.sh'
         state: present
 #    - jenkins_job:
 #        name: TigerOS-Master
