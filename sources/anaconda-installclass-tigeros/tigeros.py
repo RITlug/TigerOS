@@ -33,7 +33,7 @@ class TigerOSBaseInstallClass(BaseInstallClass):
 
     _l10n_domain = "anaconda"
 
-    efi_dir = "tigeros"
+    efi_dir = "fedora"
 
     help_placeholder = "TigerOSPlaceholder.html"
     help_placeholder_plain_text = "TigerOSPlaceholder.txt"
