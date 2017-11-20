@@ -18,15 +18,15 @@ fi
 mock --old-chroot -r fedora-26-x86_64 --init
 mock --old-chroot -r fedora-26-x86_64 --copyin kickstarts/tigeros-source.ks ./tigeros-source.ks
 mock --old-chroot -r fedora-26-x86_64 --install pungi
-mock --old-chroot -r fedora-26-x86_64 --install https://tigeros.ritlug.com/packages/x86_64/anaconda-installclass-tigeros-26-1.fc26.x86_64.rpm
+mock --old-chroot -r fedora-26-x86_64 --install https://builder.ritlug.com/packages/x86_64/anaconda-installclass-tigeros-26-1.fc26.x86_64.rpm
 mock --old-chroot -r fedora-26-x86_64 --chroot "pungi -G -c tigeros-source.ks --name=TigerOS --ver 26 --force && pungi -C -c tigeros-source.ks --name=TigerOS --ver=26 --force && pungi -I -c tigeros-source.ks --name=TigerOS --ver=26 --sourceisos --force"
-rm -rf /usr/share/nginx/html/isos/TigerOS-source-$(date +%Y%m%d).iso
-mock --old-chroot -r fedora-26-x86_64 --copyout /26/source/iso/TigerOS-DVD-source-26.iso /usr/share/nginx/html/isos/TigerOS-source-$(date +%Y%m%d).iso 
+rm -rf /var/www/isos/TigerOS-source-$(date +%Y%m%d).iso
+mock --old-chroot -r fedora-26-x86_64 --copyout /26/source/iso/TigerOS-DVD-source-26.iso /var/www/isos/TigerOS-source-$(date +%Y%m%d).iso 
 rm -rf /var/lib/mock/
-cd /usr/share/nginx/html/isos
+cd /var/www/isos
 rm -rf CHECKSUM512-source-$(date +%Y%m%d)
 sha512sum TigerOS-source-$(date +%Y%m%d).iso > CHECKSUM512-source-$(date +%Y%m%d) 
 chown -R nginx:nginx /usr/share/nginx/html
-chmod 755 /usr/share/nginx/html/isos/*.iso
+chmod 755 /var/www/isos/*.iso
 echo "Pungi finished"
 
