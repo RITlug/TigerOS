@@ -5,26 +5,30 @@
       dnf: name="{{ item }}" state=present
       become: true
       with_items:
-        - nginx
-        - jenkins
-        - mock
+        # base/management
         - git
         - openssh-server
-        - pungi
-        - rpm-sign
-        - certbot
-        - fedora-packager
-        - fedpkg
         - fail2ban
         - fail2ban-server
         - iptables
         - dnf-automatic
-        - mosh
-        - vim
         - python-firewall
+        - certbot
+        # CI
+        - nginx
+        - jenkins
+        - mock
+        - docker
+        - pungi
+        - rpm-sign
+        - fedora-packager
+        - fedpkg
 #        - python-jenkins
         # need to get anaconda install class for TigerOS possibly
-        #- letsencrypt
+        # these are personal pref tools - uncomment if desired
+        # use ansible roles?
+#        - mosh
+#        - vim
     - name: Allow HTTPS (nginx)
       firewalld:
         service: https
@@ -81,21 +85,30 @@
     - name: Update packages
       command: dnf update
       become: true
-    - name: Allow Jenkins sudo access for devel
-      become: true
-      lineinfile:
-        path: /etc/sudoers
-        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Devel/workspace/tigeros/build-scripts/ci-build-mock.sh'
-        state: present
     - name: Allow Jenkins sudo access for master
       become: true
       lineinfile:
         path: /etc/sudoers
         line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Master/workspace/tigeros/build-scripts/ci-build-mock.sh'
         state: present
+    - name: Allow Jenkins sudo access for devel
+      become: true
+      lineinfile:
+        path: /etc/sudoers
+        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Devel/workspace/tigeros/build-scripts/ci-build-mock.sh'
+        state: present
+    - name: Allow Jenkins sudo access for nightly
+      become: true
+      lineinfile:
+        path: /etc/sudoers
+        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Nightly/workspace/tigeros/build-scripts/ci-build-mock.sh'
+        state: present
 #    - jenkins_job:
 #        name: TigerOS-Master
 #        state: present
 #    - jenkins_job:
 #        name: TigerOS-Devel
+#        state: present
+#    - jenkins_job:
+#        name: TigerOS-Nightly
 #        state: present
