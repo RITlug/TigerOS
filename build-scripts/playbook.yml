@@ -82,6 +82,11 @@
     - name: Reload Firewall
       command: firewall-cmd --reload
       become: true
+    - name: Enable Docker service
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
     - name: Update packages
       command: dnf update
       become: true
