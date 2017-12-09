@@ -1,6 +1,9 @@
 ---
 - hosts: 127.0.0.1
   tasks:
+    - name: Add Docker CE repo
+      command: dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+      become: true
     - name: Install packages
       dnf: name="{{ item }}" state=present
       become: true
@@ -18,7 +21,7 @@
         - nginx
         - jenkins
         - mock
-        - docker
+        - docker-ce
         - pungi
         - rpm-sign
         - fedora-packager
