@@ -28,10 +28,10 @@
         - fedpkg
 #        - python-jenkins
         # need to get anaconda install class for TigerOS possibly
-        # these are personal pref tools - uncomment if desired
         # use ansible roles?
-#        - mosh
-#        - vim
+        - mosh
+        - vim
+        - tmux
     - name: Allow HTTPS (nginx)
       firewalld:
         service: https
