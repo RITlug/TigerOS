@@ -32,6 +32,37 @@
         - mosh
         - vim
         - tmux
+    - name: Allow Jenkins sudo access for master
+      become: true
+      lineinfile:
+        path: /etc/sudoers
+        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Master/workspace/tigeros/build-scripts/ci-build-mock.sh'
+        state: present
+    - name: Allow Jenkins sudo access for devel
+      become: true
+      lineinfile:
+        path: /etc/sudoers
+        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Devel/workspace/tigeros/build-scripts/ci-build-mock.sh'
+        state: present
+    - name: Allow Jenkins sudo access for nightly
+      become: true
+      lineinfile:
+        path: /etc/sudoers
+        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Nightly/workspace/tigeros/build-scripts/ci-build-mock.sh'
+        state: present
+#    - jenkins_job:
+#        name: TigerOS-Master
+#        state: present
+#    - jenkins_job:
+#        name: TigerOS-Devel
+#        state: present
+#    - jenkins_job:
+#        name: TigerOS-Nightly
+#        state: present
+    - name: Set Docker parameters
+      copy:
+        content: '{"storage-driver":"devicemapper","storage-opts":["dm.basesize=12G"]}'
+        dest: /etc/docker/daemon.json
     - name: Allow HTTPS (nginx)
       firewalld:
         service: https
@@ -93,30 +124,3 @@
     - name: Update packages
       command: dnf update
       become: true
-    - name: Allow Jenkins sudo access for master
-      become: true
-      lineinfile:
-        path: /etc/sudoers
-        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Master/workspace/tigeros/build-scripts/ci-build-mock.sh'
-        state: present
-    - name: Allow Jenkins sudo access for devel
-      become: true
-      lineinfile:
-        path: /etc/sudoers
-        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Devel/workspace/tigeros/build-scripts/ci-build-mock.sh'
-        state: present
-    - name: Allow Jenkins sudo access for nightly
-      become: true
-      lineinfile:
-        path: /etc/sudoers
-        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Nightly/workspace/tigeros/build-scripts/ci-build-mock.sh'
-        state: present
-#    - jenkins_job:
-#        name: TigerOS-Master
-#        state: present
-#    - jenkins_job:
-#        name: TigerOS-Devel
-#        state: present
-#    - jenkins_job:
-#        name: TigerOS-Nightly
-#        state: present
