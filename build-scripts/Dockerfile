@@ -24,7 +24,7 @@ RUN dnf update -y && \
         anaconda-tui && \
     dnf install -y \
         https://builder.ritlug.com/packages/x86_64/anaconda-installclass-tigeros-26-1.fc26.x86_64.rpm && \
-	git clone https://github.com/RITlug/TigerOS.git /repo -b ${BRANCH} --single-branch
+	git clone https://github.com/RITlug/TigerOS.git /repo -b ${BRANCH} --single-branch --depth=1
 # BUILD PHASE
 WORKDIR /repo
 USER root:root
