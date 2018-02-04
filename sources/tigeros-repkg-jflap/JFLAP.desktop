@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=7.0
+Name=JFLAP
+Comment=Experiment with formal languages topics
+Path=
+Exec=/usr/local/bin/jflap
+Icon=/usr/local/share/icons/JFLAP.jpg
+Terminal=false
+Categories=Education;Languages;Java;
