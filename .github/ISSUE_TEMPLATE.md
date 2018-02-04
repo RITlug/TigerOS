@@ -37,7 +37,7 @@
 
     If a feature request, help us understand your idea. Be descriptive, but
     also consider any other issues that could happen if it is added. Would it
-    affect other features of MobArena?
+    affect other features of TigerOS?
  -->
 
 ### Bug report
@@ -50,7 +50,7 @@
 
 **Does it need new or changed commands? What are they?**:
 
-**Does this feature affect other parts of MobArena?**:
+**Does this feature affect other parts of TigerOS?**:
 
 
 # Details
