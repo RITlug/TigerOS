@@ -18,5 +18,5 @@ Please follow the below workflow when contributing to TigerOS. This helps preven
 * Due to this being a student run project, there may be a delay in getting a response from the developers.
 * All scripts added to github should have 644 permissions.
 * When possible, please contact the maintainer or creator of a component through a github issue or IRC. The email accounts listed are university accounts and may filter your message as spam. 
-* Please use the editorconfig file when editing files to ensure consistency.
+* Please use the [editorconfig](https://github.com/RITlug/TigerOS/blob/devel/.editorconfig) file when editing files to ensure consistency.
 * Contact ritlug@gmail.com with any questions. Please include the phrase TigerOS in the subject.
