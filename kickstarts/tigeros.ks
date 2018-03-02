@@ -385,6 +385,10 @@ EOF
 
 %end
 
+%post
+gsettings set org.gnome.desktop.interface clock-format 12h
+%end
+
 %packages
 @anaconda-tools
 @base-x
