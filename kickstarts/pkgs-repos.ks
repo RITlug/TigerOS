@@ -28,6 +28,7 @@ tigeros-logos
 tigeros-release
 tigeros-repos
 tigeros-scripts
+tigeros-ui-tweaks
 transmission
 vim
 wget
