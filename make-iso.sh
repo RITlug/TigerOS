@@ -10,7 +10,8 @@ set -eu
 ####################################################################
 green=`tput setaf 2`
 reset=`tput sgr0`
-#to use mock comment out lines 25, 26 and 30 and uncomment all lines beginning with mock
+vers=27
+#to use mock comment out lines 25, $vers and 30 and uncomment all lines beginning with mock
 echo "${green}Welcome to the TigerOS build script${reset}"
 # Check that the current user is root
 if [ $EUID != 0 ]
@@ -19,10 +20,10 @@ then
     exit
 fi
 dnf install -y lorax-lmc-novirt git vim-minimal pykickstart
-dnf install -y https://builder.ritlug.com/packages/x86_64/anaconda-installclass-tigeros-26-1.fc26.x86_64.rpm
+dnf install -y https://builder.ritlug.com/packages/x86_64/anaconda-installclass-tigeros-$vers-1.fc$vers.x86_64.rpm
 echo "${green}Beginning build process${reset}"
 setenforce 0
 livemedia-creator --ks tigeros.ks --no-virt --resultdir /var/lmc --project
-TigerOS-Live --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever 27 --title TigerOS-live --macboot
+TigerOS-Live --make-iso --volid TigerOS --iso-only --iso-name TigerOS.iso --releasever $vers --title TigerOS-live --macboot
 echo "${green}ISO saved to $(pwd)/TigerOS.iso${reset}"
 setenforce 1
