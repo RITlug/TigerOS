@@ -8,6 +8,9 @@ set -eu
 # Usage: sudo bash ci-build-mock.sh                                             #
 #                                                                               #
 #################################################################################
+
+vers=27
+
 # Check that the current user is root
 if [ $EUID != 0 ]
 then
@@ -15,13 +18,14 @@ then
     exit
 fi
 #wget -O tigeros-source.ks https://raw.githubusercontent.com/RITlug/TigerOS/master/tigeros-source.ks
-mock --old-chroot -r fedora-26-x86_64 --init
-mock --old-chroot -r fedora-26-x86_64 --copyin kickstarts/tigeros-source.ks ./tigeros-source.ks
-mock --old-chroot -r fedora-26-x86_64 --install pungi
-mock --old-chroot -r fedora-26-x86_64 --install https://builder.ritlug.com/packages/x86_64/anaconda-installclass-tigeros-26-1.fc26.x86_64.rpm
-mock --old-chroot -r fedora-26-x86_64 --chroot "pungi -G -c tigeros-source.ks --name=TigerOS --ver 26 --force && pungi -C -c tigeros-source.ks --name=TigerOS --ver=26 --force && pungi -I -c tigeros-source.ks --name=TigerOS --ver=26 --sourceisos --force"
+mock --old-chroot -r fedora-$vers-x86_64 --init
+mock --old-chroot -r fedora-$vers-x86_64 --copyin kickstarts/tigeros-source.ks ./tigeros-source.ks
+mock --old-chroot -r fedora-$vers-x86_64 --install pungi
+mock --old-chroot -r fedora-$vers-x86_64 --install
+https://builder.ritlug.com/packages/x86_64/anaconda-installclass-tigeros-$vers-1.fc$vers.x86_64.rpm
+mock --old-chroot -r fedora-$vers-x86_64 --chroot "pungi -G -c tigeros-source.ks --name=TigerOS --ver $vers --force && pungi -C -c tigeros-source.ks --name=TigerOS --ver=$vers --force && pungi -I -c tigeros-source.ks--name=TigerOS --ver=$vers --sourceisos --force"
 rm -rf /var/www/isos/TigerOS-source-$(date +%Y%m%d).iso
-mock --old-chroot -r fedora-26-x86_64 --copyout /26/source/iso/TigerOS-DVD-source-26.iso /var/www/isos/TigerOS-source-$(date +%Y%m%d).iso 
+mock --old-chroot -r fedora-$vers-x86_64 --copyout /$vers/source/iso/TigerOS-DVD-source-$vers.iso /var/www/isos/TigerOS-source-$(date +%Y%m%d).iso 
 rm -rf /var/lib/mock/
 cd /var/www/isos
 rm -rf CHECKSUM512-source-$(date +%Y%m%d)
