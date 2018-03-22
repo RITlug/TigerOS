@@ -1,76 +1,90 @@
 ---
-- hosts: 127.0.0.1
+- hosts: all
   tasks:
+    - name: Create a login user
+      user:
+       name: mirror
+       # generated with python3 -c "from passlib.hash import sha512_crypt; import getpass; hash=sha512_crypt.using(rounds=5000).hash(getpass.getpass());print(hash)"
+       password: '$6$IVQHQ4VO.f4vcXpN$pRvU17kAzeO/kICDVoGoHN3vhCdNZ.ZHUYp/tAotT4BdwSYyHarsL21ouKL85NeYaZMyX1D/N2jJONdhWi7PG/'
+       groups: # Empty by default, here we give it some groups
+        - wheel
+       state: present
+      become: true
+    - name: Install EPEL
+      yum: name="https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm" state=present
+      become: true
     - name: Install packages
-      dnf: name="{{ item }}" state=present
+      yum: name="{{ item }}" state=present
       become: true
       with_items:
-        - nginx
-        - jenkins
-        - mock
-        - git
-        - openssh-server
-        - pungi
-        - rpm-sign
         - certbot
-        - fedora-packager
-        - fedpkg
+        - cockpit
         - fail2ban
         - fail2ban-server
+        - firewalld
+        - git
         - iptables
-        - dnf-automatic
-        - mosh
+        - nginx
+        - openssh-server
         - vim
-        - python-firewall
-#        - python-jenkins
-        # need to get anaconda install class for TigerOS possibly
-        #- letsencrypt
+    - name: Install python-firewall
+      package: name=python-firewall
+      when: ansible_python_version|version_compare('3', '<')
+      become: true
+    - name: Install python3-firewall
+      package: name=python3-firewall
+      when: ansible_python_version|version_compare('3', '>=')
+      become: true
+    - name: Enable and start firewalld service
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
+      become: true
     - name: Allow HTTPS (nginx)
       firewalld:
         service: https
         permanent: true
         state: enabled
+      become: true
     - name: Allow HTTP (nginx)
       firewalld:
         service: http
         permanent: true
         state: enabled
+      become: true
     - name: Allow SSH access
       firewalld:
         service: ssh
         permanent: true
         state: enabled
-    - name: Allow 8080 (Jenkins)
-      firewalld:
-        port: 8080/tcp
-        permanent: true
-        state: enabled
+      become: true
     - name: Allow Cockpit
       firewalld:
         service: cockpit
         permanent: true
         state: enabled
+      become: true
     - name: Enable nginx service
       systemd:
         name: nginx
         enabled: yes
         state: started
-    - name: Enable Jenkins service
-      systemd:
-        name: jenkins
-        enabled: yes
-        state: started
+      become: true
     - name: Enable Cockpit service
+      become: true
       systemd:
         name: cockpit
         enabled: yes
         state: started
     - name: Enable sshd (openssh-server) service
+      become: true
       systemd:
         name: sshd
         enabled: yes
         state: started
     - name: Enable fail2ban service
+      become: true
       systemd:
         name: fail2ban
         enabled: yes
@@ -79,23 +93,76 @@
       command: firewall-cmd --reload
       become: true
     - name: Update packages
-      command: dnf update
+      command: yum update -y
       become: true
-    - name: Allow Jenkins sudo access for devel
+    - name: Add certbot autorenewal
       become: true
-      lineinfile:
-        path: /etc/sudoers
-        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Devel/workspace/tigeros/build-scripts/ci-build-mock.sh'
-        state: present
-    - name: Allow Jenkins sudo access for master
+      cron: 
+       name: "Certbot autorenew"
+       user: "root"
+       minute: "*"
+       hour: "7"
+       day: "19"
+       month: "*"
+       weekday: "*"
+       job: "certbot-3 -q renew"
+    - name: Install nginx config
       become: true
-      lineinfile:
-        path: /etc/sudoers
-        line: 'jenkins ALL=NOPASSWD: /var/lib/jenkins/jobs/TigerOS-Master/workspace/tigeros/build-scripts/ci-build-mock.sh'
-        state: present
-#    - jenkins_job:
-#        name: TigerOS-Master
-#        state: present
-#    - jenkins_job:
-#        name: TigerOS-Devel
-#        state: present
+      copy:
+        dest: /etc/nginx/nginx.conf
+        mode: 0644
+        owner: root
+        group: root
+        content: |
+         # For more information on configuration, see:
+         #   * Official English Documentation: http://nginx.org/en/docs/
+         #   * Official Russian Documentation: http://nginx.org/ru/docs/
+ 
+         user nginx;
+         worker_processes auto;
+         error_log /var/log/nginx/error.log;
+         pid /run/nginx.pid;
+ 
+         # Load dynamic modules. See /usr/share/nginx/README.dynamic.
+         include /usr/share/nginx/modules/*.conf;
+ 
+         events {
+             worker_connections 1024;
+         }
+         http{
+         server {
+                 listen 80;
+                 server_name mirror.ritlug.com;
+                 root    /var/www/;
+                 # Load configuration files for the default server block.
+                 include /etc/nginx/default.d/*.conf;
+                 location / {
+                         autoindex on;
+                         autoindex_exact_size off;
+                 }
+
+                 error_page 404 /404.html;
+                     location = /40x.html {
+                 }
+ 
+                 error_page 500 502 503 504 /50x.html;
+                     location = /50x.html {
+                 }       
+         }
+         }
+    - name: Create webserver directories
+      become: true
+      file:
+        path: "{{ item }}"
+        owner: root
+        group: nginx
+        mode: 0755
+        state: directory
+      with_items:
+        - /var/www/mirror.ritlug.com/
+        - /var/www/mirror.ritlug.com/TigerOS/
+        - /var/www/mirror.ritlug.com/TigerOS/27/
+        - /var/www/mirror.ritlug.com/TigerOS/27/release/
+        - /var/www/mirror.ritlug.com/TigerOS/27/packages/
+        - /var/www/mirror.ritlug.com/TigerOS/27/packages/source/
+        - /var/www/mirror.ritlug.com/TigerOS/27/packages/x86_64/ 
