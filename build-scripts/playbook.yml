@@ -17,7 +17,7 @@
       yum: name="{{ item }}" state=present
       become: true
       with_items:
-        - certbot
+        - certbot-nginx
         - cockpit
         - fail2ban
         - fail2ban-server
@@ -132,8 +132,8 @@
          http{
          server {
                  listen 80;
-                 server_name mirror.ritlug.com;
-                 root    /var/www/;
+                 server_name mirrors.ritlug.com;
+                 root    /var/www/mirrors.ritlug.com/;
                  # Load configuration files for the default server block.
                  include /etc/nginx/default.d/*.conf;
                  location / {
@@ -166,3 +166,4 @@
         - /var/www/mirror.ritlug.com/TigerOS/27/packages/
         - /var/www/mirror.ritlug.com/TigerOS/27/packages/source/
         - /var/www/mirror.ritlug.com/TigerOS/27/packages/x86_64/ 
+    - debug: "Setup done. Make sure all configs are correct and then run certbot-nginx as root to setup HTTPS" 
