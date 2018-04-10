@@ -431,6 +431,7 @@ rhythmbox
 rpmfusion-free-release
 scrot
 tigeros-backgrounds
+tigeros-dash-to-dock
 tigeros-ff-profile
 tigeros-logos
 tigeros-release
