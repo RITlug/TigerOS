@@ -7,10 +7,8 @@ TigerOS
 ```  
   git clone https://github.com/RITlug/TigerOS.git
 ```
-Install [mock](https://github.com/rpm-software-management/mock/wiki)
 
 ### Build the ISO
-Requires current version of Fedora.x86\_64 to build.
 From the directory where you cloned this repo run the commands below. You may need to preface it with `sudo` if you do not have root privileges.
 ```
 chmod +x make-iso.sh
@@ -38,3 +36,5 @@ Please see [CONTRIBUTING.md](CONTRIBUTING.md)
 * [About Fedora Remixes](https://fedoraproject.org/wiki/Remix)
 * [Building ISOs With Livemedia Creator](https://fedoraproject.org/wiki/Livemedia-creator-_How_to_create_and_use_a_Live_CD)
 * [2017-02-24 Etherpad notes](https://etherpad.gnome.org/p/rit-remix-discussion)
+
+**Join the conversation! Find us on [#rit-tigeros](https://webchat.freenode.net/?channels=rit-tigeros) on the [Freenode IRC network](https://freenode.net/) for development discussions and support.**
