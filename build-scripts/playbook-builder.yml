@@ -1,0 +1,80 @@
+---
+- hosts: 127.0.0.1
+  tasks:
+    - name: Install packages
+      dnf: name="{{ item }}" state=present
+      become: true
+      with_items:
+        - copr-rpmbuild
+        - dnf-automatic
+        - fail2ban
+        - fail2ban-server
+        - git
+        - iptables
+        - jenkins
+        - openssh-server
+        - python-jenkins
+        - pungi
+        - mosh
+        - rpm-sign
+        - vim
+          # need to get anaconda install class for TigerOS possibly
+    - name: Allow SSH access
+      firewalld:
+        service: ssh
+        permanent: true
+        state: enabled
+    - name: Allow 8080 (Jenkins)
+      firewalld:
+        port: 8080/tcp
+        permanent: true
+        state: enabled
+    - name: Allow Cockpit
+      firewalld:
+        service: cockpit
+        permanent: true
+        state: enabled
+    - name: Enable Jenkins service
+      systemd:
+        name: jenkins
+        enabled: yes
+        state: started
+    - name: Enable Cockpit service
+      systemd:
+        name: cockpit
+        enabled: yes
+        state: started
+    - name: Enable sshd (openssh-server) service
+      systemd:
+        name: sshd
+        enabled: yes
+        state: started
+    - name: Enable fail2ban service
+      systemd:
+        name: fail2ban
+        enabled: yes
+        state: started
+    - name: Reload Firewall
+      command: firewall-cmd --reload
+      become: true
+    - name: Update packages
+      command: dnf update
+      become: true
+    - name: Allow Jenkins sudo access for devel
+      become: true
+      lineinfile:
+        path: /etc/sudoers
+        line: 'jenkins ALL=NOPASSWD: /path/to/jenkins/job/script'
+        state: present
+    - name: Allow Jenkins sudo access for master
+      become: true
+      lineinfile:
+        path: /etc/sudoers
+        line: 'jenkins ALL=NOPASSWD: /path/to/jenkins/job/script'
+        state: present
+#    - jenkins_job:
+#        name: TigerOS-Master
+#        state: present
+#    - jenkins_job:
+#        name: TigerOS-Devel
+#        state: present
