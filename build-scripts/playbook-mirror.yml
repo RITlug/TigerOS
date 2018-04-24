@@ -19,6 +19,7 @@
       with_items:
         - certbot
         - cockpit
+        - createrepo_c
         - fail2ban
         - fail2ban-server
         - firewalld
