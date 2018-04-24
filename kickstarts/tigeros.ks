@@ -406,6 +406,7 @@ gsettings set org.gnome.desktop.interface clock-format 12h
 @standard
 aajohan-comfortaa-fonts
 anaconda
+arc-theme
 dracut-live
 glibc-all-langpacks
 grub2-efi
