@@ -385,11 +385,6 @@ EOF
 
 %end
 
-## FIXME - May not entirely work. May need to be added as an RPM update
-%post
-gsettings set org.gnome.desktop.interface clock-format 12h
-%end
-
 %packages
 @anaconda-tools
 @base-x
