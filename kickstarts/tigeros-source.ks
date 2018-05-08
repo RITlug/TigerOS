@@ -13,11 +13,11 @@ repo --name="fedora" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo
 repo --name="updates" --mirrorlist=http://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
 repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch
 repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
-repo --name="tigeros" --baseurl=https://builder.ritlug.com/packages/$basearch/
+repo --name="tigeros" --baseurl=https://mirrors.ritlug.com/TigerOS/$releasever/packages/x86_64/
 # Source repos
 repo --name="source"  --baseurl=http://mirror.cc.vt.edu/pub/fedora/linux/releases/$releasever/Everything/source/tree/
 repo --name="updates-source" --baseurl=http://mirror.cc.vt.edu/pub/fedora/linux/updates/$releasever/SRPMS/
-repo --name="tigeros-source" --baseurl=https://builder.ritlug.com/packages/source/
+repo --name="tigeros-source" --baseurl=https://mirrors.ritlug.com/TigerOS/$releasever/packages/source/
 repo --name="rpmfusion-free-source" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/$releasever/Everything/source/SRPMS/
 repo --name="rpmfusion-free-updates-source" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/$releasever/SRPMS/
 repo --name="Copr repo for gscreenshot owned by thenaterhood" --baseurl=https://copr-be.cloud.fedoraproject.org/results/thenaterhood/gscreenshot/fedora-$releasever-$basearch/
