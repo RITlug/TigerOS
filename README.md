@@ -18,12 +18,11 @@ With a 3.40GHz dual core i3 CPU with hyperthreading enabled and 16GB of RAM, the
 
 ## Authors
 
-* Aidan Kahrs (Lead) <axk4545@rit.edu>
+* Christian Martin (Lead) (find me on IRC as ctmartin)
 * Josh Bicking (Tutorials and Scripts) <jhb2345@rit.edu>
 * Regina Locicero (Designer) <rtl3971@rit.edu>
 * Tim Zabel (Scripts and UI) <tjz8659@rit.edu>
-* Christian Martin (Build Automation) (find me on IRC)
-
+* Aidan Kahrs (Former Project Lead, Consulting) <axk4545@rit.edu>
 
 ## Tasks
 
