@@ -15,8 +15,9 @@ repo --name="fedora" --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?r
 repo --name="updates" --mirrorlist=https://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=$basearch
 repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch
 repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
-repo --name="tigeros" --baseurl=https://mirrors.ritlug.com/TigerOS/$releasever/packages/x86_64/
+repo --name="tigeros" --baseurl=https://mirrors.ritlug.com/TigerOS/$releasever/packages/$basearch/
 repo --name="Copr repo for gscreenshot owned by thenaterhood" --baseurl=https://copr-be.cloud.fedoraproject.org/results/thenaterhood/gscreenshot/fedora-$releasever-$basearch/
+repo --name="3rd party PyCharm repo" --baseurl=https://copr-be.cloud.fedoraproject.org/results/phracek/PyCharm/fedora-$releasever-$basearch/
 # Shutdown after installation
 shutdown
 # Network information
@@ -414,6 +415,7 @@ chromium
 generic-release-notes
 gimp
 glibc-all-langpacks
+gnome-tweaks
 gscreenshot
 gstreamer1-plugin-mpg123
 hexchat
@@ -431,6 +433,8 @@ tigeros-dash-to-dock
 tigeros-ff-profile
 tigeros-logos
 tigeros-release
+tigeros-repkg-jflap
+tigeros-repkg-logisim
 tigeros-repos
 tigeros-scripts
 tigeros-ui-tweaks
