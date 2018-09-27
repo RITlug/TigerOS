@@ -433,8 +433,6 @@ tigeros-dash-to-dock
 tigeros-ff-profile
 tigeros-logos
 tigeros-release
-tigeros-repkg-jflap
-tigeros-repkg-logisim
 tigeros-repos
 tigeros-scripts
 tigeros-ui-tweaks
