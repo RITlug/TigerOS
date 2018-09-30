@@ -162,8 +162,8 @@
       with_items:
         - /var/www/mirrors.ritlug.com/
         - /var/www/mirrors.ritlug.com/TigerOS/
-        - /var/www/mirrors.ritlug.com/TigerOS/27/
-        - /var/www/mirrors.ritlug.com/TigerOS/27/release/
-        - /var/www/mirrors.ritlug.com/TigerOS/27/packages/
-        - /var/www/mirrors.ritlug.com/TigerOS/27/packages/source/
-        - /var/www/mirrors.ritlug.com/TigerOS/27/packages/x86_64/ 
+        - /var/www/mirrors.ritlug.com/TigerOS/28/
+        - /var/www/mirrors.ritlug.com/TigerOS/28/release/
+        - /var/www/mirrors.ritlug.com/TigerOS/28/packages/
+        - /var/www/mirrors.ritlug.com/TigerOS/28/packages/source/
+        - /var/www/mirrors.ritlug.com/TigerOS/28/packages/x86_64/ 
