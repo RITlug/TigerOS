@@ -1,5 +1,5 @@
 TigerOS
-====================
+=======
 
 ## Instructions
 ### Setup 
@@ -14,7 +14,7 @@ From the directory where you cloned this repo run the commands below. You may ne
 chmod +x make-iso.sh
 ./make-iso.sh
 ```
-With a 3.40GHz dual core i3 CPU with hyperthreading enabled and 16GB of RAM, the build process after the initial build should take approximately 40 minutes to complete. The initial build time will vary based on specs. 
+The build process should take approximately 40 minutes to complete. The initial build time will vary based on specs. 
 
 ## Current Team
 
