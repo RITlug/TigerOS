@@ -10,7 +10,7 @@ set -eu
 ####################################################################
 green=`tput setaf 2`
 reset=`tput sgr0`
-vers=28
+vers=29
 result_dir=/var/lmc/TigerOS
 
 #to use mock comment out lines 25, $vers and 30 and uncomment all lines beginning with mock
