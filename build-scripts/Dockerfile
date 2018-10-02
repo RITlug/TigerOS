@@ -1,3 +1,6 @@
+#######################################
+# TigerOS Dockerfile for ISO Building #
+#######################################
 FROM fedora:29
 
 # NOTE: RELEASE_VER DOES NOT AFFECT EVERYTHING (such as anaconda installclass)
