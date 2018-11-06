@@ -1,7 +1,7 @@
 repo --name="rpmfusion-free" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch
 repo --name="rpmfusion-free-updates" --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
 repo --name="tigeros" --baseurl=https://builder.ritlug.com/packages/$basearch/
-repo --name="Copr repo for gscreenshot owned by thenaterhood" --baseurl=https://copr-be.cloud.fedoraproject.org/results/thenaterhood/gscreenshot/fedora-$releasever-$basearch/
+#repo --name="Copr repo for gscreenshot owned by thenaterhood" --baseurl=https://copr-be.cloud.fedoraproject.org/results/thenaterhood/gscreenshot/fedora-$releasever-$basearch/
 
 
 
@@ -10,7 +10,7 @@ chromium
 generic-release-notes
 gimp
 glibc-all-langpacks
-gscreenshot
+#gscreenshot
 gstreamer1-plugin-mpg123
 hexchat
 htop

@@ -20,7 +20,7 @@ repo --name="updates-source" --baseurl=http://mirror.cc.vt.edu/pub/fedora/linux/
 repo --name="tigeros-source" --baseurl=https://mirrors.ritlug.com/TigerOS/$releasever/packages/source/
 repo --name="rpmfusion-free-source" --baseurl=http://download1.rpmfusion.org/free/fedora/releases/$releasever/Everything/source/SRPMS/
 repo --name="rpmfusion-free-updates-source" --baseurl=http://download1.rpmfusion.org/free/fedora/updates/$releasever/SRPMS/
-repo --name="Copr repo for gscreenshot owned by thenaterhood" --baseurl=https://copr-be.cloud.fedoraproject.org/results/thenaterhood/gscreenshot/fedora-$releasever-$basearch/
+#repo --name="Copr repo for gscreenshot owned by thenaterhood" --baseurl=https://copr-be.cloud.fedoraproject.org/results/thenaterhood/gscreenshot/fedora-$releasever-$basearch/
 # Shutdown after installation
 shutdown
 # Network information
@@ -398,7 +398,7 @@ chromium
 generic-release-notes
 gimp
 glibc-all-langpacks
-gscreenshot
+# gscreenshot
 gstreamer1-plugin-mpg123
 hexchat
 htop
