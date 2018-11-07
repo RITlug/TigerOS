@@ -425,7 +425,7 @@ zsh
 -@input-methods
 -gfs2-utils
 -reiserfs-utils
--PackageKit*
+# -PackageKit*
 -autofs
 -coolkey
 -fedora-bookmarks
