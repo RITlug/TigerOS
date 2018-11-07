@@ -53,7 +53,6 @@ zsh
 -mpage
 -numactl
 -policycoreutils-gui
--sane-backends
 -sox
 -system-config-boot
 -system-config-language
