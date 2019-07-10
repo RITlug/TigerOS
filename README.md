@@ -17,11 +17,13 @@ chmod +x make-iso.sh
 With a 3.40GHz dual core i3 CPU with hyperthreading enabled and 16GB of RAM, the build process after the initial build should take approximately 40 minutes to complete. The initial build time will vary based on specs. 
 
 ## Current Team
+* Tim Zabel (Lead, Scripts and UI) <tjz8659@rit.edu>
+* Nathaniel Larrimore (Scripts) <nlmeminger@gmail.com>
+* Christian Martin (Former Lead, Infra) (find me on IRC as ctmartin)
 
-* Christian Martin (Lead) (find me on IRC as ctmartin)
+### Honorable Mentions
 * Josh Bicking (Tutorials and Scripts) <jhb2345@rit.edu>
 * Regina Locicero (Designer) <rtl3971@rit.edu>
-* Tim Zabel (Scripts and UI) <tjz8659@rit.edu>
 * Aidan Kahrs (Former Project Lead, Consulting) <axk4545@rit.edu>
 
 *Additional thanks to [many others](https://github.com/RITlug/TigerOS/graphs/contributors) for their contributions.*
