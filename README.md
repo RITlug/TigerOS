@@ -40,4 +40,16 @@ Please see [CONTRIBUTING.md](CONTRIBUTING.md)
 * [Building ISOs With Livemedia Creator](https://fedoraproject.org/wiki/Livemedia-creator-_How_to_create_and_use_a_Live_CD)
 * [2017-02-24 Etherpad notes](https://etherpad.gnome.org/p/rit-remix-discussion)
 
+## Licensing
+
+The assets provided in [source/design-assets](https://github.com/RITlug/TigerOS/tree/devel/sources/design-assets) are protected under Creative Commons 4.0. This means you can:
+
+ * Share or redistribute these assets on any medium or format.
+ * Remix, transform, or build on the material for any purpose.
+
+If you do plan on redistributing or transforming this content, please keep in mind that:
+
+ * You must provide credit to the original designers in TigerOS, and you must document any changes you made to the original asset.
+ * You cannot apply legal terms that prevent others from using the assets as detailed above.
+
 **Join the conversation! Find us on [#rit-tigeros](https://webchat.freenode.net/?channels=rit-tigeros) on the [Freenode IRC network](https://freenode.net/) for development discussions and support.**
